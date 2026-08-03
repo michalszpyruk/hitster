@@ -27,6 +27,18 @@ from fetch_songs import load_env, norm
 
 DECK = 'songs.csv'
 CACHE = 'discogs_cache.json'
+ALBUM_CACHE = 'album_cache.json'
+
+# Years a human confirmed. No automated pass may overwrite these -- every one of them
+# was found by someone noticing a wrong card, which is more evidence than any API gives.
+PINNED = {
+    ('Kombi', 'Słodkiego miłego życia'): '1984',
+    ('Kombi', 'Black and White'): '1985',
+    ('Kombii', 'Pokolenie'): '2004',
+    ('Halina Frąckowiak', 'Bądź gotowy do drogi'): '1974',
+    ('Ich Troje', 'A wszystko to bo ciebie kocham'): '1999',
+    ('Myslovitz', 'Mieć czy być'): '2006',
+}
 UA = {'User-Agent': 'HitsterPL/0.1 +personal-use'}
 TOLERANCE = 1
 PAUSE = 1.1        # Discogs allows 60 authenticated requests a minute
@@ -56,7 +68,118 @@ def discogs_year(artist, title, token, cache):
     return None
 
 
+def rewrite():
+    """Reset every year from the sources: Discogs first, then Spotify, then keep ours.
+
+    A year is left unstarred only when Discogs and Spotify agree with each other within
+    a year. One source alone is adopted but stays starred -- Discogs was 10/15 exact on
+    the spot check, good enough to use, not good enough to call verified.
+    """
+    from audit_years import looks_like_compilation
+    dis = json.load(open(CACHE, encoding='utf-8')) if os.path.exists(CACHE) else {}
+    alb = json.load(open(ALBUM_CACHE, encoding='utf-8')) if os.path.exists(ALBUM_CACHE) else {}
+
+    with open(DECK, encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+        fields = list(rows[0])
+
+    changes, stats = [], {'discogs': 0, 'spotify': 0, 'kept': 0, 'pinned': 0}
+    for r in rows:
+        if not r['track_id']:
+            continue
+        ours = r['year'].rstrip('*')
+        if (r['artist'], r['title']) in PINNED:
+            r['year'] = PINNED[(r['artist'], r['title'])]
+            stats['pinned'] += 1
+            continue
+
+        d = dis.get(f"{norm(r['artist'])}|{norm(r['title'])}")
+        if d is not None and not (1950 <= d <= 2026):
+            d = None                      # nonsense year, ignore the source
+        a = alb.get(r['track_id'])
+        sp = None
+        if a and a['date'].isdigit() and not looks_like_compilation(a['album']):
+            sp = int(a['date'])
+
+        if d:
+            new, src = d, 'discogs'
+        elif sp:
+            new, src = sp, 'spotify'
+        else:
+            new, src = int(ours) if ours.isdigit() else None, 'kept'
+        if new is None:
+            continue
+        stats[src] += 1
+        agreed = d is not None and sp is not None and abs(d - sp) <= 1
+        r['year'] = f'{new}' if agreed else f'{new}*'
+        if ours.isdigit() and new != int(ours):
+            changes.append((new - int(ours), r['artist'], r['title'], ours, new, src))
+
+    with open(DECK, 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fields)
+        w.writeheader()
+        w.writerows(rows)
+
+    starred = sum(1 for r in rows if r['year'].endswith('*'))
+    print(f'sources: {stats}')
+    print(f'{len(changes)} years changed; {starred} of {len(rows)} still starred\n')
+    changes.sort(key=lambda x: -abs(x[0]))
+    print('largest changes:')
+    for gap, art, tit, old, new, src in changes[:30]:
+        print(f'  {old:>5} -> {new}  ({gap:+3})  {art[:24]:<24} {tit[:28]:<28} [{src}]')
+
+
+def from_spotify():
+    """Take Spotify's album date as the year wherever Spotify has one.
+
+    Explicitly requested. Recorded here because the numbers argue against it: measured
+    over the whole deck, Spotify's date is too late on 229 of 341 cards, with a median
+    overshoot of +38 years for 1960s songs and +24 for the 1980s. `release_date` is a
+    property of the album a track sits on, not of the song, and old Polish music exists
+    on Spotify almost only as compilations and remasters.
+
+    Human-confirmed years in PINNED still win -- those were corrections someone made
+    deliberately, and silently reversing them is never what anyone means.
+    """
+    alb = json.load(open(ALBUM_CACHE, encoding='utf-8')) if os.path.exists(ALBUM_CACHE) else {}
+    with open(DECK, encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+        fields = list(rows[0])
+
+    changes, taken, kept = [], 0, 0
+    for r in rows:
+        if not r['track_id']:
+            continue
+        if (r['artist'], r['title']) in PINNED:
+            r['year'] = PINNED[(r['artist'], r['title'])]
+            continue
+        ours = r['year'].rstrip('*')
+        c = alb.get(r['track_id'])
+        if c and c['date'].isdigit():
+            new = int(c['date'])
+            if ours.isdigit() and new != int(ours):
+                changes.append((new - int(ours), r['artist'], r['title'], ours, new))
+            r['year'] = str(new)          # accepted as given, so no star
+            taken += 1
+        else:
+            kept += 1
+
+    with open(DECK, 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fields)
+        w.writeheader()
+        w.writerows(rows)
+    print(f'took Spotify year for {taken} cards, kept {kept}, {len(changes)} changed')
+    changes.sort(key=lambda x: -abs(x[0]))
+    print('\nlargest shifts:')
+    for gap, art, tit, old, new in changes[:20]:
+        print(f'  {old} -> {new}  ({gap:+3})  {art[:24]:<24} {tit[:30]}')
+
+
 def main():
+    if '--spotify' in sys.argv:
+        return from_spotify()
+    if '--rewrite' in sys.argv:
+        return rewrite()
     apply = '--apply' in sys.argv
     token = load_env()['DISCOGS_TOKEN']
     cache = json.load(open(CACHE, encoding='utf-8')) if os.path.exists(CACHE) else {}
