@@ -47,9 +47,37 @@ Fix them as you notice them: edit `songs.csv` (and `seed.csv`, so a regeneration
 bring the old value back), drop the `*`, and re-run `make_cards.py`. Everything that does
 arithmetic on a year strips the star first — `test_cards.py` covers that.
 
-Free sources were all measured and all failed, which is why the star exists:
-Spotify 4/13, MusicBrainz 3/10, Wikidata ~1/4 (it dated Kombii's *Pokolenie* to 1955).
-Discogs is the one plausible option left, but its search needs a free personal token.
+## Verifying years with Discogs
+
+```bash
+python verify_discogs.py            # report only
+python verify_discogs.py --apply    # clear the star from confirmed years
+```
+
+Measured against 15 songs with known years, Discogs is the only source that works:
+
+| Source | Exact |
+|---|---|
+| **Discogs** | **10/15** (13/15 within a year) |
+| Spotify `release_date` | 4/13 — tracks resolve to compilations |
+| MusicBrainz | 3/10 — thin Polish coverage |
+| Wikidata | ~1/4 — dated Kombii's *Pokolenie* to **1955** |
+
+It is collector-maintained and catalogues original Polish pressings, which is exactly what
+Spotify lacks. Running it took the deck from 114 confirmed years to 191.
+
+The rule:
+
+- **within 1 year** → confirmed, star cleared
+- **Discogs earlier** → our year is probably too late; reported but *never* applied
+  automatically, because the `track` search sometimes matches a different song by the
+  same artist on an older release
+- **Discogs later** → Discogs is missing the original pressing; the star stays and the
+  year is left alone
+
+Needs `DISCOGS_TOKEN` in `.env` (discogs.com → Settings → Developers → Generate token).
+Results cache in `discogs_cache.json`, so re-runs are free. The API allows 60 requests a
+minute, so a full pass over the deck takes about six minutes.
 
 ## Auditing the deck
 
