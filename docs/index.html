@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0d10">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Hitster PL</title>
+<style>
+  :root { --bg:#0b0d10; --fg:#f2f4f7; --dim:#8b93a1; --accent:#1db954; --err:#ff6b6b; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.4 -apple-system,system-ui,sans-serif;
+         display:flex; flex-direction:column; padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom); }
+  h1 { font-size:15px; letter-spacing:.18em; text-transform:uppercase; color:var(--dim);
+       font-weight:600; text-align:center; margin:14px 0; }
+  .screen { flex:1; display:none; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+  .screen.on { display:flex; }
+  button { font:600 18px/1 -apple-system,system-ui,sans-serif; color:var(--fg); background:#1b1f26;
+           border:1px solid #2c323c; border-radius:14px; padding:18px 24px; min-height:60px; width:100%;
+           max-width:420px; cursor:pointer; }
+  button.primary { background:var(--accent); color:#07130c; border-color:transparent; }
+  button:active { transform:scale(.985); }
+  #video { width:100%; max-width:420px; aspect-ratio:1; object-fit:cover; border-radius:20px; background:#000; }
+  .hint { color:var(--dim); font-size:14px; text-align:center; max-width:420px; }
+  .err { color:var(--err); font-size:14px; text-align:center; max-width:420px; min-height:1.4em; }
+  .status { font-size:26px; font-weight:700; text-align:center; }
+  .answer { text-align:center; }
+  .answer .yr { font-size:76px; font-weight:800; line-height:1; margin:6px 0; }
+  .answer .ar { font-size:17px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
+  .answer .ti { font-size:17px; font-style:italic; color:var(--dim); }
+  .row { display:flex; gap:10px; width:100%; max-width:420px; }
+  select { width:100%; max-width:420px; padding:14px; border-radius:12px; background:#1b1f26;
+           color:var(--fg); border:1px solid #2c323c; font-size:16px; }
+</style>
+</head>
+<body>
+<h1>Hitster PL</h1>
+
+<div id="s-login" class="screen">
+  <p class="hint">Scan a card, hear the song, guess the year.</p>
+  <button class="primary" id="login">Connect Spotify</button>
+  <p class="hint">Spotify Premium required — playback runs through the Spotify app on this phone.</p>
+</div>
+
+<div id="s-scan" class="screen">
+  <video id="video" playsinline muted autoplay></video>
+  <p class="hint" id="scanhint">Point the camera at a card.</p>
+  <p class="err" id="scanerr"></p>
+</div>
+
+<div id="s-play" class="screen">
+  <p class="status" id="status">Playing…</p>
+  <div class="answer" id="answer" hidden>
+    <div class="ar" id="a-artist"></div>
+    <div class="yr" id="a-year"></div>
+    <div class="ti" id="a-title"></div>
+  </div>
+  <button class="primary" id="reveal">Reveal</button>
+  <div class="row">
+    <button id="pause">Pause</button>
+    <button id="next">Next card</button>
+  </div>
+  <select id="devices" hidden></select>
+  <p class="err" id="playerr"></p>
+</div>
+
+<script src="jsqr.js"></script>
+<script>
+// ---------------------------------------------------------------- config
+const CLIENT_ID = '56278ffb67724af79eef6a27a75d21dc';
+// Must match a Redirect URI registered in the Spotify dashboard, exactly.
+const REDIRECT = location.origin + location.pathname;
+const SCOPES = 'user-read-playback-state user-modify-playback-state';
+
+const $ = id => document.getElementById(id);
+const show = name => document.querySelectorAll('.screen')
+  .forEach(s => s.classList.toggle('on', s.id === 's-' + name));
+
+let deck = {};        // track_id -> {a: artist, t: title, y: year}
+let current = null;   // deck entry for the card being played
+let currentId = null; // its Spotify track id
+
+// ---------------------------------------------------------------- auth (PKCE)
+// PKCE, not the client-credentials flow: this page is public, so it must never
+// hold the client secret.
+const store = {
+  get t()  { return localStorage.getItem('tok'); },
+  get r()  { return localStorage.getItem('ref'); },
+  get exp(){ return +localStorage.getItem('exp') || 0; },
+  save(j)  {
+    localStorage.setItem('tok', j.access_token);
+    if (j.refresh_token) localStorage.setItem('ref', j.refresh_token);
+    localStorage.setItem('exp', Date.now() + (j.expires_in - 60) * 1000);
+  },
+  clear() { ['tok','ref','exp'].forEach(k => localStorage.removeItem(k)); }
+};
+
+const b64url = buf => btoa(String.fromCharCode(...new Uint8Array(buf)))
+  .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+
+async function login() {
+  const verifier = b64url(crypto.getRandomValues(new Uint8Array(48)));
+  sessionStorage.setItem('ver', verifier);
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
+  const p = new URLSearchParams({
+    client_id: CLIENT_ID, response_type: 'code', redirect_uri: REDIRECT,
+    scope: SCOPES, code_challenge_method: 'S256', code_challenge: b64url(digest)
+  });
+  location.href = 'https://accounts.spotify.com/authorize?' + p;
+}
+
+async function tokenReq(body) {
+  const r = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({client_id: CLIENT_ID, ...body})
+  });
+  if (!r.ok) throw new Error('auth failed: ' + await r.text());
+  return r.json();
+}
+
+async function exchangeCode(code) {
+  const j = await tokenReq({grant_type:'authorization_code', code,
+    redirect_uri: REDIRECT, code_verifier: sessionStorage.getItem('ver')});
+  store.save(j);
+  history.replaceState({}, '', REDIRECT);   // drop ?code= so a reload doesn't retry it
+}
+
+async function token() {
+  if (store.t && Date.now() < store.exp) return store.t;
+  if (!store.r) return null;
+  try {
+    store.save(await tokenReq({grant_type:'refresh_token', refresh_token: store.r}));
+    return store.t;
+  } catch { store.clear(); return null; }
+}
+
+async function api(path, opts = {}) {
+  const t = await token();
+  if (!t) { show('login'); throw new Error('signed out'); }
+  const r = await fetch('https://api.spotify.com/v1' + path, {
+    ...opts, headers: {...(opts.headers||{}), Authorization: 'Bearer ' + t}
+  });
+  if (r.status === 204 || r.status === 202) return null;
+  const body = await r.text();
+  if (!r.ok) throw Object.assign(new Error(body || r.status), {status: r.status});
+  return body ? JSON.parse(body) : null;
+}
+
+// ---------------------------------------------------------------- playback
+// Spotify Connect can only target a device Spotify already knows about, so an
+// empty device list means "open the Spotify app once", not a bug.
+async function pickDevice(prefer) {
+  const {devices = []} = await api('/me/player/devices') || {};
+  const sel = $('devices');
+  const want = prefer || sel.value;   // survive the rebuild below: keep the user's choice
+  sel.hidden = devices.length < 2;
+  sel.replaceChildren(...devices.map(d => {
+    const o = document.createElement('option');
+    o.value = d.id; o.textContent = d.name;   // device names are user-set; never inject as HTML
+    return o;
+  }));
+  if (!devices.length) return null;
+  const chosen = devices.find(d => d.id === want)
+              || devices.find(d => d.is_active) || devices[0];
+  sel.value = chosen.id;
+  return chosen.id;
+}
+
+async function play(trackId, prefer) {
+  $('playerr').textContent = '';
+  const device = await pickDevice(prefer);
+  if (!device) {
+    $('playerr').textContent = 'No Spotify device found. Open Spotify on this phone, press play once, then tap Next card.';
+    return;
+  }
+  try {
+    await api('/me/player/play?device_id=' + device, {
+      method: 'PUT', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({uris: ['spotify:track:' + trackId]})
+    });
+    $('status').textContent = 'Playing…';
+  } catch (e) {
+    $('playerr').textContent = e.status === 403
+      ? 'Spotify refused playback — this needs a Premium account.'
+      : 'Could not start playback: ' + e.message.slice(0, 120);
+  }
+}
+
+// ---------------------------------------------------------------- scanning
+const TRACK_RE = /track[/:]([A-Za-z0-9]{22})/;
+let stream = null, scanning = false;
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d', {willReadFrequently: true});
+
+async function startScan() {
+  show('scan');
+  $('scanerr').textContent = '';
+  $('answer').hidden = true;
+  try {
+    stream = stream || await navigator.mediaDevices.getUserMedia(
+      {video: {facingMode: {ideal: 'environment'}}});
+  } catch {
+    $('scanerr').textContent = 'No camera access. Allow it in Settings → Safari → Camera.';
+    return;
+  }
+  const v = $('video');
+  v.srcObject = stream;
+  await v.play().catch(() => {});
+  scanning = true;
+  requestAnimationFrame(tick);
+}
+
+function tick() {
+  if (!scanning) return;
+  const v = $('video');
+  if (v.readyState === v.HAVE_ENOUGH_DATA) {
+    // Decode at ~400px: full sensor resolution costs frames and buys no accuracy.
+    const scale = 400 / Math.max(v.videoWidth, 1);
+    canvas.width = Math.round(v.videoWidth * scale);
+    canvas.height = Math.round(v.videoHeight * scale);
+    ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+    const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const hit = jsQR(img.data, img.width, img.height, {inversionAttempts: 'dontInvert'});
+    const m = hit && hit.data.match(TRACK_RE);
+    if (m) { onCard(m[1]); return; }
+  }
+  requestAnimationFrame(tick);
+}
+
+function onCard(trackId) {
+  scanning = false;
+  $('video').pause();
+  currentId = trackId;
+  current = deck[trackId] || null;
+  $('status').textContent = 'Playing…';
+  $('answer').hidden = true;
+  $('reveal').hidden = false;
+  show('play');
+  if (navigator.vibrate) navigator.vibrate(40);
+  play(trackId);
+}
+
+// ---------------------------------------------------------------- wiring
+$('login').onclick = login;
+$('next').onclick = startScan;
+// Switching output (phone -> speaker) restarts the same track on the new device.
+$('devices').onchange = e => currentId && play(currentId, e.target.value);
+$('pause').onclick = async () => {
+  try { await api('/me/player/pause', {method:'PUT'}); $('status').textContent = 'Paused'; }
+  catch (e) { $('playerr').textContent = e.message.slice(0, 120); }
+};
+$('reveal').onclick = () => {
+  $('reveal').hidden = true;
+  $('answer').hidden = false;
+  $('a-artist').textContent = current ? current.a : 'Unknown card';
+  $('a-year').textContent   = current ? current.y : '—';
+  $('a-title').textContent  = current ? current.t : 'not in this deck';
+};
+
+(async function boot() {
+  deck = await fetch('deck.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const code = new URLSearchParams(location.search).get('code');
+  if (code) { try { await exchangeCode(code); } catch (e) { console.error(e); } }
+  if (await token()) startScan(); else show('login');
+})();
+</script>
+</body>
+</html>

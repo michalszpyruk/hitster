@@ -1,0 +1,54 @@
+"""Checks for the two things that fail silently. Run: python test_cards.py"""
+from make_cards import back_order, COLS
+from fetch_songs import flag, norm, artist_matches
+
+
+def test_duplex_alignment():
+    """Every answer must land physically behind its own QR after a long-edge flip.
+
+    Turning a portrait sheet over on its long edge mirrors it left-to-right, so the
+    card printed at front (row, col) ends up against back (row, COLS-1-col).
+    """
+    for n in (12, 11, 7, 1):                       # full sheet, and partial last sheets
+        page = list(range(n))
+        rows = back_order(page, COLS)
+        for i, card in enumerate(page):            # walk the fronts, in print order
+            r, c = divmod(i, COLS)
+            assert rows[r][COLS - 1 - c] == card, (
+                f'n={n}: card {card} printed at front ({r},{c}) is not behind its own QR')
+        assert sorted(x for row in rows for x in row if x is not None) == page, \
+            f'n={n}: mirroring lost or duplicated a card'
+
+
+def test_year_flag():
+    # MusicBrainz knows of a 1980 release but the seed claims 1995 -> seed is too late.
+    assert 'YEAR?' in flag(1995, 1980, 'id', True)
+    # MusicBrainz only has a late compilation; that proves nothing, so stay quiet.
+    assert flag(1980, 1991, 'id', True) == ''
+    # Small disagreements are noise (pressing dates slip a year), not errors.
+    assert flag(1983, 1982, 'id', True) == ''
+    # Unresolvable or dubious matches always surface.
+    assert 'NO-SPOTIFY-MATCH' in flag(1980, None, '', False)
+    assert 'FUZZY-TITLE' in flag(1980, None, 'id', False)
+
+
+def test_norm_folds_polish():
+    assert norm('Małgośka') == norm('Malgoska')
+    assert norm('Kocham Cię, Kochanie Moje') == norm('kocham cie kochanie moje')
+
+
+def test_artist_matching():
+    assert artist_matches('Czesław Niemen', 'Niemen')      # Spotify drops the first name
+    assert artist_matches('Maanam', 'MAANAM')
+    assert artist_matches('Kayah i Bregović', 'Kayah')
+    assert not artist_matches('Hey', 'Heyah')              # short names must match exactly
+    assert not artist_matches('Kult', 'Kultura')
+    assert not artist_matches('Republika', 'Perfect')
+
+
+if __name__ == '__main__':
+    test_duplex_alignment()
+    test_year_flag()
+    test_norm_folds_polish()
+    test_artist_matching()
+    print('ok')
