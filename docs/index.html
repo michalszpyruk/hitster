@@ -104,6 +104,7 @@ let deckError = null; // why the deck failed to load, if it did
 let current = null;   // deck entry for the card being played
 let currentId = null; // its Spotify track id
 let playing = false;  // drives the Play/Pause button label
+let started = false;  // has this card been played yet? decides start vs resume
 
 // Answers come from deck.json, never from Spotify: Spotify's release_date is the
 // remaster year and would date "Nie spoczniemy" to 2025 instead of 1977.
@@ -184,7 +185,12 @@ async function api(path, opts = {}) {
   if (r.status === 204 || r.status === 202) return null;
   const body = await r.text();
   if (!r.ok) throw Object.assign(new Error(body || r.status), {status: r.status});
-  if (!body) return null;
+  // Player commands (play/pause/seek) answer with an empty or non-JSON body and
+  // nothing worth reading. Only parse when the response says it is JSON -- the
+  // callers that need data (/me/player/devices, /tracks) always set the header.
+  if (!body || !(r.headers.get('content-type') || '').includes('application/json')) {
+    return null;
+  }
   try {
     return JSON.parse(body);
   } catch {
@@ -226,6 +232,7 @@ async function trackDuration(id) {
   const hit = localStorage.getItem('dur:' + id);
   if (hit) return +hit;
   const t = await api('/tracks/' + id);
+  if (!t || !t.duration_ms) throw new Error('could not read track length');
   localStorage.setItem('dur:' + id, t.duration_ms);
   return t.duration_ms;
 }
@@ -254,6 +261,7 @@ async function play(trackId, prefer) {
       method: 'PUT', headers: {'Content-Type':'application/json'},
       body: JSON.stringify(body)
     });
+    started = true;
     setPlaying(true);
     if (ms) clipTimer = setTimeout(async () => {
       try { await api('/me/player/pause', {method: 'PUT'}); } catch (e) {}
@@ -314,19 +322,20 @@ function onCard(trackId) {
   $('video').pause();
   currentId = trackId;
   current = deck[trackId] || null;
-  $('status').textContent = 'Playing…';
+  started = false;              // nothing plays until the Play button is tapped
+  $('playerr').textContent = '';
   $('answer').hidden = true;
   $('reveal').hidden = false;
+  setPlaying(false);
   show('play');
   if (navigator.vibrate) navigator.vibrate(40);
-  play(trackId);
 }
 
 // ---------------------------------------------------------------- wiring
 function setPlaying(on) {
   playing = on;
   $('toggle').textContent = on ? 'Pause' : 'Play';
-  $('status').textContent = on ? 'Playing…' : 'Paused';
+  $('status').textContent = on ? 'Playing…' : (started ? 'Paused' : 'Tap Play');
 }
 
 function setMode(len, {save = true} = {}) {
@@ -359,11 +368,17 @@ $('toggle').onclick = async () => {
       cancelClip();
       await api('/me/player/pause', {method: 'PUT'});
       setPlaying(false);
+    } else if (!started) {
+      await play(currentId);          // first tap: applies the clip mode
     } else {
-      await api('/me/player/play', {method: 'PUT'});
+      await api('/me/player/play', {method: 'PUT'});   // resume where it stopped
       setPlaying(true);
     }
   } catch (e) {
+    if (e.status === 403 && playing) {
+      setPlaying(false);   // Spotify refuses to pause what is already paused
+      return;
+    }
     $('playerr').textContent = e.status === 404
       ? 'Spotify lost the device. Press play in Spotify once, then tap Play again.'
       : String(e.message).slice(0, 140);
