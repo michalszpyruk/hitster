@@ -85,9 +85,11 @@ def fetch(pid):
     for t in entity.get('trackList') or []:
         tid = (t.get('uri') or '').split(':')[-1]
         if len(tid) == 22 and t.get('title'):
+            # The embed joins multiple artists with U+00A0, not a plain space, so any
+            # comparison against a normally-typed name silently fails.
             rows.append({'track_id': tid,
-                         'artist': (t.get('subtitle') or '').strip(),
-                         'title': t['title'].strip()})
+                         'artist': (t.get('subtitle') or '').replace('\xa0', ' ').strip(),
+                         'title': t['title'].replace('\xa0', ' ').strip()})
     return entity.get('name') or pid, rows
 
 
@@ -134,7 +136,15 @@ def main(args):
                 have_ids.add(r['track_id'])
                 have_titles.add(base_title(r['title']))
 
+    # Keep whatever is already pending. Those rows may have hand-typed years in them,
+    # and overwriting the file would throw that work away silently.
     new, seen, seen_titles = [], set(), set()
+    if os.path.exists(OUT):
+        for r in csv.DictReader(open(OUT, encoding='utf-8')):
+            new.append(r)
+            seen.add(r['track_id'])
+            seen_titles.add((norm(r['artist']), base_title(r['title'])))
+        print(f'{OUT}: keeping {len(new)} rows already pending')
     for arg in args:
         pid = playlist_id(arg)
         name, rows = fetch(pid)
