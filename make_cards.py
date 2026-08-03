@@ -46,12 +46,20 @@ def palette_class(track_id):
     return 'c%d' % (zlib.crc32(track_id.encode()) % PALETTES)
 
 
+def split_year(year):
+    """("1984*") -> ("1984", "*"). A trailing star marks a year nobody has confirmed."""
+    y = str(year).strip()
+    return (y[:-1], '*') if y.endswith('*') else (y, '')
+
+
 def back_html(song):
     if song is None:
         return '<div class="card back empty"></div>'
+    year, unsure = split_year(song['year'])
     return (f'<div class="card back {palette_class(song["track_id"])}">'
             f'<div class="artist">{html.escape(song["artist"])}</div>'
-            f'<div class="year">{html.escape(str(song["year"]))}</div>'
+            f'<div class="year">{html.escape(year)}'
+            f'<span class="unsure">{unsure}</span></div>'
             f'<div class="title">{html.escape(song["title"])}</div>'
             f'</div>')
 
@@ -83,6 +91,8 @@ body { margin: 0; font-family: "Helvetica Neue", Arial, sans-serif; -webkit-prin
 .back .artist { font-size: 4.2mm; font-weight: 700; text-transform: uppercase;
                 letter-spacing: 0.35mm; line-height: 1.25; margin-bottom: 5mm; }
 .back .year   { font-size: 18mm; font-weight: 800; line-height: 1; letter-spacing: -0.4mm; }
+/* Unconfirmed year: visible enough to notice, quiet enough not to fight the number. */
+.back .unsure { font-size: 8mm; opacity: .6; vertical-align: super; margin-left: 0.5mm; }
 .back .title  { font-size: 4mm; font-style: italic; line-height: 1.3; margin-top: 5mm; }
 .back.c0 { background: linear-gradient(155deg, #5e380f, #8f5f16); }
 .back.c1 { background: linear-gradient(155deg, #6f2610, #b34e1c); }

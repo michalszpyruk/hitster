@@ -1,144 +1,144 @@
 track_id,artist,title,year,spotify_year,mb_year,check
-6edKYktrjHFfTh0SB3O76j,Czesław Niemen,Dziwny jest ten świat,1967,2023,1980,FUZZY-TITLE
-0JcUJ4ZF75Z3Q3bda0BoWa,Czesław Niemen,Sen o Warszawie,1966,2014,1979,
+6edKYktrjHFfTh0SB3O76j,Czesław Niemen,Dziwny jest ten świat,1967*,2023,1980,FUZZY-TITLE
+0JcUJ4ZF75Z3Q3bda0BoWa,Czesław Niemen,Sen o Warszawie,1966*,2014,1979,
 4J7Hiscxz5qGYLSwRkl8Pr,Czesław Niemen,Czy mnie jeszcze pamiętasz,1967,1968,,
-32Nv867OX4nA20sbjKcmQz,Czerwone Gitary,Anna Maria,1968,2015,1968,
+32Nv867OX4nA20sbjKcmQz,Czerwone Gitary,Anna Maria,1968*,2015,1968,
 64PrlRNzKDm3de49MMzPMl,Czerwone Gitary,Historia jednej znajomości,1966,1966,,
-7FYOAT3OYVFDXr6f33oBhM,Czerwone Gitary,Nie zadzieraj nosa,1967,1966,1991,
-53CWYDvhZFnCL63urRo4kQ,Czerwone Gitary,Biały krzyż,1969,2015,1968,
+7FYOAT3OYVFDXr6f33oBhM,Czerwone Gitary,Nie zadzieraj nosa,1967*,1966,1991,
+53CWYDvhZFnCL63urRo4kQ,Czerwone Gitary,Biały krzyż,1969*,2015,1968,
 2g59LWL5y0BuPsyJZQTubb,Skaldowie,Z kopyta kulig rwie,1968,1969,1969,
-5S115BRg8EghKqq1D0Wx9J,Skaldowie,Wszystko mi mówi że mnie ktoś pokochał,1969,2008,1968,
-1Tlg9FVgoVaG8wmd6TujZe,Trubadurzy,Znamy się tylko z widzenia,1968,2006,1993,
+5S115BRg8EghKqq1D0Wx9J,Skaldowie,Wszystko mi mówi że mnie ktoś pokochał,1969*,2008,1968,
+1Tlg9FVgoVaG8wmd6TujZe,Trubadurzy,Znamy się tylko z widzenia,1968*,2006,1993,
 1igCQvQVusux7Lak5dUnui,Anna German,Tańczące Eurydyki,1964,1966,1991,FUZZY-TITLE
-30RYAUBm8vFbZXYw5BnFNo,Karin Stanek,Malowana lala,1963,2015,2017,
+30RYAUBm8vFbZXYw5BnFNo,Karin Stanek,Malowana lala,1963*,2015,2017,
 ,Filipinki,Batumi,1963,,1964,NO-SPOTIFY-MATCH
 ,Ewa Demarczyk,Grande Valse Brillante,1967,,1967,NO-SPOTIFY-MATCH
 4xdzAOB3baQ8VmPJ8cf3ij,Breakout,Gdybyś kochał hej,1969,1969,1969,
 ,Niebiesko-Czarni,Nie pukaj do mych drzwi,1965,,,NO-SPOTIFY-MATCH
-2yP42agi5aEFufZ86onpmR,Czerwone Gitary,Nie spoczniemy,1977,2025,1991,
-5DDJf23zKdvpWBA2KmgyPW,Czerwone Gitary,Płoną góry płoną lasy,1973,2015,1971,
-1OrQTsLlcOJRM27CAj0AGd,Marek Grechuta,Dni których nie znamy,1971,2010,1971,
-6nIgrcbRlqOmLhKrfXvs1U,Marek Grechuta,Ocalić od zapomnienia,1970,2015,,
-34BMY6d2POkFLERCJPOrlS,Marek Grechuta,Będziesz moją panią,1972,2010,1970,
-1wGjhv27md3YHSFMPqBFWt,Marek Grechuta,Wiosna ach to ty,1972,2010,1998,
-7Amfq9Zm3UOcU1JUJiFyhd,Skaldowie,Nie domykajmy drzwi,1972,2008,1989,
-1rTIdJlLHR60adzUKtjjAr,Maryla Rodowicz,Małgośka,1973,2025,1974,
+2yP42agi5aEFufZ86onpmR,Czerwone Gitary,Nie spoczniemy,1977*,2025,1991,
+5DDJf23zKdvpWBA2KmgyPW,Czerwone Gitary,Płoną góry płoną lasy,1973*,2015,1971,
+1OrQTsLlcOJRM27CAj0AGd,Marek Grechuta,Dni których nie znamy,1971*,2010,1971,
+6nIgrcbRlqOmLhKrfXvs1U,Marek Grechuta,Ocalić od zapomnienia,1970*,2015,,
+34BMY6d2POkFLERCJPOrlS,Marek Grechuta,Będziesz moją panią,1972*,2010,1970,
+1wGjhv27md3YHSFMPqBFWt,Marek Grechuta,Wiosna ach to ty,1972*,2010,1998,
+7Amfq9Zm3UOcU1JUJiFyhd,Skaldowie,Nie domykajmy drzwi,1972*,2008,1989,
+1rTIdJlLHR60adzUKtjjAr,Maryla Rodowicz,Małgośka,1973*,2025,1974,
 5Y8Dsq5Rms5cuUWnWk37m0,Maryla Rodowicz,Sing-Sing,1976,1976,1976,
-6PyoARCP7y45lLHlqEJVXa,Maryla Rodowicz,Remedium,1970,1978,1978,
+6PyoARCP7y45lLHlqEJVXa,Maryla Rodowicz,Remedium,1970*,1978,1978,
 0Z64VYDXM5lVZziPJHEd9L,Anna Jantar,Tyle słońca w całym mieście,1974,1974,1974,
 6qBBQTa27IJAsz3nGxTm7p,Anna Jantar,Nic nie może wiecznie trwać,1978,1980,,FUZZY-TITLE
-0MuTNYAcuA53hGdgvA7V2J,Budka Suflera,Cień wielkiej góry,1975,2010,,
-2WfY2N0Md2vEddffnaMPNU,Budka Suflera,Sen o dolinie,1975,1994,1984,
+0MuTNYAcuA53hGdgvA7V2J,Budka Suflera,Cień wielkiej góry,1975*,2010,,
+2WfY2N0Md2vEddffnaMPNU,Budka Suflera,Sen o dolinie,1975*,1994,1984,
 12OV9e97TVkKb33cPqVSOj,Breakout,Poszłabym za tobą,1969,1969,1969,
-1OzlBug7c2LKPvIoMkuQhe,Krzysztof Krawczyk,Parostatek,1972,2019,1976,
+1OzlBug7c2LKPvIoMkuQhe,Krzysztof Krawczyk,Parostatek,1972*,2019,1976,
 22bJ7lVt4BdW4zqZK673JS,Irena Jarocka,Odpływają kawiarenki,1974,1976,2001,FUZZY-TITLE
-4Wm4rtJTkXIGOIWrEvTtzN,Zbigniew Wodecki,Zacznij od Bacha,1976,2004,1994,
-4sHTqR2RQGsH5pSFqtXroU,Zbigniew Wodecki,Lubię wracać tam gdzie byłem,1976,2004,1994,
+4Wm4rtJTkXIGOIWrEvTtzN,Zbigniew Wodecki,Zacznij od Bacha,1976*,2004,1994,
+4sHTqR2RQGsH5pSFqtXroU,Zbigniew Wodecki,Lubię wracać tam gdzie byłem,1976*,2004,1994,
 6dk8atHUykqu6LlIYynvnt,Halina Frąckowiak,Bądź gotowy do drogi,1974,1974,,FUZZY-TITLE
-1m3f0A84ut3wuMkmJKtYih,Stan Borys,Jaskółka uwięziona,1970,2009,1974,
-4CYojURFHAG0ZQUUdaKJtb,Czesław Niemen,Bema pamięci żałobny rapsod,1970,1969,2009,
-1c5m8DAePjPzpFUe4Wo94H,Andrzej Dąbrowski,Do zakochania jeden krok,1971,2017,1972,
-1UUBkjBgce8P53hQC3nHtU,Danuta Rinn,Gdzie ci mężczyźni,1974,2015,2003,
-4ep6x5f8h2X91TkXVSEtr8,Klan,Z brzytwą na poziomki,1971,1970,1970,
-7cBqlKwLd0ltLHyerMHSAB,2 plus 1,Chodź pomaluj mój świat,1976,1986,1972,FUZZY-TITLE YEAR?-mb1972
-6hqftK2O6t2sI5AmwLhnLs,Krystyna Prońko,Jesteś lekiem na całe zło,1979,2000,1983,FUZZY-TITLE
+1m3f0A84ut3wuMkmJKtYih,Stan Borys,Jaskółka uwięziona,1970*,2009,1974,
+4CYojURFHAG0ZQUUdaKJtb,Czesław Niemen,Bema pamięci żałobny rapsod,1970*,1969,2009,
+1c5m8DAePjPzpFUe4Wo94H,Andrzej Dąbrowski,Do zakochania jeden krok,1971*,2017,1972,
+1UUBkjBgce8P53hQC3nHtU,Danuta Rinn,Gdzie ci mężczyźni,1974*,2015,2003,
+4ep6x5f8h2X91TkXVSEtr8,Klan,Z brzytwą na poziomki,1971*,1970,1970,
+7cBqlKwLd0ltLHyerMHSAB,2 plus 1,Chodź pomaluj mój świat,1976*,1986,1972,FUZZY-TITLE YEAR?-mb1972
+6hqftK2O6t2sI5AmwLhnLs,Krystyna Prońko,Jesteś lekiem na całe zło,1979*,2000,1983,FUZZY-TITLE
 ,Andrzej i Eliza,Nie liczę godzin i lat,1975,,,NO-SPOTIFY-MATCH
-4MNpebxVPvNs1nwCn5Wuqo,SBB,Freedom with Us,1974,1978,1978,
-0EauD1ypehCUFYIVyZLy2i,Maanam,Boskie Buenos,1980,2015,1985,
-6CwbrtZnJNqef5CqSLqPdX,Maanam,Kocham Cię Kochanie Moje,1980,1995,1991,
-70X7swUO33mrChUj4JSnbW,Maanam,Krakowski spleen,1982,2015,1983,
-6QuyeVbqBT9uV5qxx131VO,Maanam,Lucciola,1984,2015,1984,
-3kZqwraA6E5Sj2ZjIMi8C6,Maanam,Oddech szczura,1981,2015,1980,
+4MNpebxVPvNs1nwCn5Wuqo,SBB,Freedom with Us,1974*,1978,1978,
+0EauD1ypehCUFYIVyZLy2i,Maanam,Boskie Buenos,1980*,2015,1985,
+6CwbrtZnJNqef5CqSLqPdX,Maanam,Kocham Cię Kochanie Moje,1980*,1995,1991,
+70X7swUO33mrChUj4JSnbW,Maanam,Krakowski spleen,1982*,2015,1983,
+6QuyeVbqBT9uV5qxx131VO,Maanam,Lucciola,1984*,2015,1984,
+3kZqwraA6E5Sj2ZjIMi8C6,Maanam,Oddech szczura,1981*,2015,1980,
 2wdPWuN8uhDCdMTVfusz5V,Republika,Kombinat,1982,1983,1983,
-0cr5D15Kn6PWGYoSFaGe5M,Republika,Biała flaga,1981,2014,1981,FUZZY-TITLE
-5hOnEdUDSZpiTJXZJIl1jy,Republika,Telefony,1982,2014,1991,FUZZY-TITLE
-4DoLXcmKky3tWmRKu188p9,Republika,Śmierć w bikini,1983,2001,,
-68oEr8XOWURWoheb2VatZi,Perfect,Autobiografia,1981,2003,1982,
+0cr5D15Kn6PWGYoSFaGe5M,Republika,Biała flaga,1981*,2014,1981,FUZZY-TITLE
+5hOnEdUDSZpiTJXZJIl1jy,Republika,Telefony,1982*,2014,1991,FUZZY-TITLE
+4DoLXcmKky3tWmRKu188p9,Republika,Śmierć w bikini,1983*,2001,,
+68oEr8XOWURWoheb2VatZi,Perfect,Autobiografia,1981*,2003,1982,
 0yON0VUvFRCULd0BWJlNf4,Perfect,Chcemy być sobą,1981,1981,1981,
 0SQx1rzFdxMDRRecifKZ2u,Perfect,Nie płacz Ewka,1981,1981,1981,
 3atA8wScktqxBZm7TM5kiB,Perfect,Pepe wróć,1981,1981,1983,
-2ViBbCUGyqrs60f3GIpDbq,Lady Pank,Mniej niż zero,1983,2003,,
-55IzVZdFOu4gS5U5RDO4g8,Lady Pank,Kryzysowa narzeczona,1983,2003,1983,
-1f3C0tSFKsjcflvMCa3X27,Lady Pank,Zawsze tam gdzie ty,1984,2007,1990,
-6RwPrRaUGHmorplKAgf3yY,Budka Suflera,Jolka Jolka pamiętasz,1981,2000,1984,FUZZY-TITLE
-2w0g3wLkzlGj9mW4QTk3yU,Budka Suflera,Takie tango,1985,1997,1997,
-3DGEskDWgjBTBSg0maIi3o,Budka Suflera,Bal wszystkich świętych,1985,2000,,
-04R1nkBjLAQ7JusQTHGNp8,Bajm,Piechotą do lata,1984,2018,1978,YEAR?-mb1978
-2YBl5MMCMYE31DSfspE3fP,Bajm,"Józek, nie daruję Ci tej nocy",1983,2018,,FUZZY-TITLE
+2ViBbCUGyqrs60f3GIpDbq,Lady Pank,Mniej niż zero,1983*,2003,,
+55IzVZdFOu4gS5U5RDO4g8,Lady Pank,Kryzysowa narzeczona,1983*,2003,1983,
+1f3C0tSFKsjcflvMCa3X27,Lady Pank,Zawsze tam gdzie ty,1984*,2007,1990,
+6RwPrRaUGHmorplKAgf3yY,Budka Suflera,Jolka Jolka pamiętasz,1981*,2000,1984,FUZZY-TITLE
+2w0g3wLkzlGj9mW4QTk3yU,Budka Suflera,Takie tango,1985*,1997,1997,
+3DGEskDWgjBTBSg0maIi3o,Budka Suflera,Bal wszystkich świętych,1985*,2000,,
+04R1nkBjLAQ7JusQTHGNp8,Bajm,Piechotą do lata,1984*,2018,1978,YEAR?-mb1978
+2YBl5MMCMYE31DSfspE3fP,Bajm,"Józek, nie daruję Ci tej nocy",1983*,2018,,FUZZY-TITLE
 3QdHnADl1gJHrbGlpWdMax,Bajm,Biała armia,1990,1990,1990,
-3c0hQgk0PysO99s5KfRETu,Kombi,Słodkiego miłego życia,1984,2008,1983,
-7a0wv5rBUsxYyxOaqcpqTP,Kombi,Black and White,1985,2008,,
+3c0hQgk0PysO99s5KfRETu,Kombi,Słodkiego miłego życia,1984*,2008,1983,
+7a0wv5rBUsxYyxOaqcpqTP,Kombi,Black and White,1985*,2008,,
 0KvWatgAJoo6FcPEztFyk5,Kombii,Pokolenie,2004,2004,,
 3mFRiJ6c2XXkd0Hd9qWP46,Kult,Arahja,1988,1988,1988,
-0Ar8ZNXQPcqod7jETJwgrx,Kult,Do Ani,1988,2016,1986,
+0Ar8ZNXQPcqod7jETJwgrx,Kult,Do Ani,1988*,2016,1986,
 4BTzNwfg3pR2pMCOlnxGLm,TSA,Mass Media,1982,1982,,
-47fIeeJypM7sXzvgp0Hg0s,Oddział Zamknięty,Party,1983,2023,1984,
-4FJZ2HZ5xiwpFVXDQWhZJa,Dżem,Whisky,1985,2015,1985,
-5UCnpFto42pPQSR1xYV4sj,Dżem,List do M,1989,2019,1991,
-6oBFFbE8aU6erQXsKJAUyd,Dżem,Wehikuł czasu,1989,1998,1989,FUZZY-TITLE
+47fIeeJypM7sXzvgp0Hg0s,Oddział Zamknięty,Party,1983*,2023,1984,
+4FJZ2HZ5xiwpFVXDQWhZJa,Dżem,Whisky,1985*,2015,1985,
+5UCnpFto42pPQSR1xYV4sj,Dżem,List do M,1989*,2019,1991,
+6oBFFbE8aU6erQXsKJAUyd,Dżem,Wehikuł czasu,1989*,1998,1989,FUZZY-TITLE
 4ESWdcgl1TfEIW5hmCHnkN,Aya RL,Skóra,1985,1985,1991,
-5aiqXGnweyx8PDvQ2SxTqc,Lombard,Przeżyj to sam,1985,2016,1983,
-4FLlgvEWdbAasguGfMKu49,Lombard,Szklana pogoda,1983,2016,1991,
-5JLWNmVTIkzdS4nxNUurzs,Turbo,Dorosłe dzieci,1983,2000,1983,
-3BHo1378rmbQ3qGkYaz18L,Papa Dance,Nasz Disneyland,1986,2005,,
-5sJiOCaWYoM60lXBuyx2iA,Urszula,Luz Blues,1983,2018,,
-2EEevGBoiKViJmByMzRDfw,Rezerwat,Zaopiekuj się mną,1985,2012,1987,
-7Gykqx9u74ZTSJtZxUzNQk,Izabela Trojanowska,Wszystko czego dziś chcę,1981,2006,1999,
-3JTf6KvrX9VYwIxKXX3yST,2 plus 1,Windą do nieba,1984,1986,1978,YEAR?-mb1978
-1PkbHw9EgJOPMYhgfHLPnJ,Zbigniew Wodecki,Chałupy Welcome To,1985,2006,1994,
-2nyBbMPk3yWE0cLJmJcbzH,Sztywny Pal Azji,Wieża radości wieża samotności,1988,2001,1987,
-1YNUXKZhr9Ot1j2KQ927Ca,Andrzej Zaucha,Bądź moim natchnieniem,1988,2014,1991,
-23zuQy8kOY4rfnMKDor5GA,Maryla Rodowicz,Damą być,1985,2024,1976,YEAR?-mb1976
-1rwTp5be3rTEpa5JaNxvcg,Brygada Kryzys,Centrala,1982,1999,1982,
-7qboThq6AiQBDDq2wCj578,Republika,Mamona,1984,1998,1998,
-4fJGiLOU3etMQTOE3HFIEz,Kobranocka,Kocham cię jak Irlandię,1990,2004,1990,
-4BxBmb83wZO3IfXBQ6rdvU,Chłopcy z Placu Broni,Kocham wolność,1990,2011,1990,
-5RDEUTUghR62DSvrjWvLNn,Róże Europy,Jedwab,1990,2015,1993,
+5aiqXGnweyx8PDvQ2SxTqc,Lombard,Przeżyj to sam,1985*,2016,1983,
+4FLlgvEWdbAasguGfMKu49,Lombard,Szklana pogoda,1983*,2016,1991,
+5JLWNmVTIkzdS4nxNUurzs,Turbo,Dorosłe dzieci,1983*,2000,1983,
+3BHo1378rmbQ3qGkYaz18L,Papa Dance,Nasz Disneyland,1986*,2005,,
+5sJiOCaWYoM60lXBuyx2iA,Urszula,Luz Blues,1983*,2018,,
+2EEevGBoiKViJmByMzRDfw,Rezerwat,Zaopiekuj się mną,1985*,2012,1987,
+7Gykqx9u74ZTSJtZxUzNQk,Izabela Trojanowska,Wszystko czego dziś chcę,1981*,2006,1999,
+3JTf6KvrX9VYwIxKXX3yST,2 plus 1,Windą do nieba,1984*,1986,1978,YEAR?-mb1978
+1PkbHw9EgJOPMYhgfHLPnJ,Zbigniew Wodecki,Chałupy Welcome To,1985*,2006,1994,
+2nyBbMPk3yWE0cLJmJcbzH,Sztywny Pal Azji,Wieża radości wieża samotności,1988*,2001,1987,
+1YNUXKZhr9Ot1j2KQ927Ca,Andrzej Zaucha,Bądź moim natchnieniem,1988*,2014,1991,
+23zuQy8kOY4rfnMKDor5GA,Maryla Rodowicz,Damą być,1985*,2024,1976,YEAR?-mb1976
+1rwTp5be3rTEpa5JaNxvcg,Brygada Kryzys,Centrala,1982*,1999,1982,
+7qboThq6AiQBDDq2wCj578,Republika,Mamona,1984*,1998,1998,
+4fJGiLOU3etMQTOE3HFIEz,Kobranocka,Kocham cię jak Irlandię,1990*,2004,1990,
+4BxBmb83wZO3IfXBQ6rdvU,Chłopcy z Placu Broni,Kocham wolność,1990*,2011,1990,
+5RDEUTUghR62DSvrjWvLNn,Róże Europy,Jedwab,1990*,2015,1993,
 1yuX7XjM3l9Gz0grQwxDIl,Hey,Teksański,1993,1993,1993,
 3a7elKJsZvbRK5CiBvXQMb,Hey,Moja i Twoja nadzieja,1993,1993,1993,
 0WhPYKWZD20gRI9EDnVBHY,Hey,Zazdrość,1993,1993,1993,
-5B30jIcaGzKSRpQIxfKOXL,Wilki,Baśka,1992,2003,,
-70cMKMBmKKIuhvc9j3rSJx,Wilki,Beniamin,1993,1992,1992,
+5B30jIcaGzKSRpQIxfKOXL,Wilki,Baśka,1992*,2003,,
+70cMKMBmKKIuhvc9j3rSJx,Wilki,Beniamin,1993*,1992,1992,
 ,Wilki,Eli lama sabachthani,1992,,,NO-SPOTIFY-MATCH
-0hszTfuEQrTo5xGAX6PoX9,Varius Manx,Zanim zrozumiesz,1996,2016,1994,FUZZY-TITLE
-7Hqq9gMv0xDndVBoZhov5E,Varius Manx,Orła cień,1995,2016,1996,FUZZY-TITLE
-0D49iTPnFuQtYvqDyWvxp2,Varius Manx,Ruchome piaski,1996,2016,1997,FUZZY-TITLE
+0hszTfuEQrTo5xGAX6PoX9,Varius Manx,Zanim zrozumiesz,1996*,2016,1994,FUZZY-TITLE
+7Hqq9gMv0xDndVBoZhov5E,Varius Manx,Orła cień,1995*,2016,1996,FUZZY-TITLE
+0D49iTPnFuQtYvqDyWvxp2,Varius Manx,Ruchome piaski,1996*,2016,1997,FUZZY-TITLE
 0CoBBrYaYakVR5udImOpxe,Edyta Bartosiewicz,Sen,1997,1999,1994,YEAR?-mb1994
-1zi0Fc4JqcyVwmhXPPpjke,Edyta Bartosiewicz,Jenny,1994,2010,1997,
+1zi0Fc4JqcyVwmhXPPpjke,Edyta Bartosiewicz,Jenny,1994*,2010,1997,
 1bufVeRDY4rwbM0hMIDZNd,Myslovitz,Chłopcy,1998,1999,1999,
 4gDG78TaA7RYH17odwTXwS,Myslovitz,Dla Ciebie,1998,1999,1999,
-7ECBfG3O3Sxs3D3TGEU7ag,Kult,Baranek,1994,1993,1993,
+7ECBfG3O3Sxs3D3TGEU7ag,Kult,Baranek,1994*,1993,1993,
 79eVgeVdtywf3u1L9lsLeY,Kult,Lewe lewe loff,1993,1994,1994,
 5lFmuFUZM6vF36fzjnJZSu,T.Love,Warszawa,1991,1991,1991,
-6WgO2rYOdgdOvQBywjyhre,T.Love,Ajrisz,1996,2001,2001,
+6WgO2rYOdgdOvQBywjyhre,T.Love,Ajrisz,1996*,2001,2001,
 1wqbsBYM3yGsIB429f7bsc,T.Love,King,1992,1992,1992,
-5979CooXWnrP121vWF2wrO,Elektryczne Gitary,Człowiek z liściem,1994,2014,1992,FUZZY-TITLE
-7lOVtqbqskmzoqAuqiDUup,Elektryczne Gitary,Jestem z miasta,1993,2014,1992,
-6wwTI407wox26wgel9Ahdx,Elektryczne Gitary,Kiler,1997,2014,1997,FUZZY-TITLE
+5979CooXWnrP121vWF2wrO,Elektryczne Gitary,Człowiek z liściem,1994*,2014,1992,FUZZY-TITLE
+7lOVtqbqskmzoqAuqiDUup,Elektryczne Gitary,Jestem z miasta,1993*,2014,1992,
+6wwTI407wox26wgel9Ahdx,Elektryczne Gitary,Kiler,1997*,2014,1997,FUZZY-TITLE
 5Nxp7zG4uWQGqIJ541lCNP,Golden Life,Oprócz błękitnego nieba,1993,1993,2007,
-4E2Bg0ui1bMfAsvXiMMymy,Kayah,Testosteron,1995,2003,2003,
+4E2Bg0ui1bMfAsvXiMMymy,Kayah,Testosteron,1995*,2003,2003,
 5qJxjjK0Oa82E2b10fSIyY,Kayah i Bregović,Prawy do lewego,1999,1999,,
 77ppwEoKPhNZx8h3Nskr7H,Kayah i Bregović,Śpij kochanie śpij,1999,1999,,
 0sCNMtIhAu9K1fYvEBQw5F,Kayah i Bregović,Trudno kochać,1999,1999,,FUZZY-TITLE
-2udLXdefCnP5kJQo5lWikN,De Mono,Kochać inaczej,1990,2017,1989,
-1ooMy7DtO3KUyHvgexd6ip,De Mono,Zostańmy sami,1993,2017,1990,YEAR?-mb1990
+2udLXdefCnP5kJQo5lWikN,De Mono,Kochać inaczej,1990*,2017,1989,
+1ooMy7DtO3KUyHvgexd6ip,De Mono,Zostańmy sami,1993*,2017,1990,YEAR?-mb1990
 5KYzcKuuimNnS3jisUkA8G,O.N.A.,Kiedy powiem sobie dość,1996,1996,1996,
-0KRBV74svbF62hwwriiiU9,Justyna Steczkowska,Dziewczyna Szamana,1996,2002,1996,
-3bnwZFjSvst58HEeneiR5X,Kasia Kowalska,A to co mam,1994,1999,1995,
-0WlgysoQGR4AUt8z5fZz9z,Norbi,Kobiety są gorące,1995,2005,1997,
-4tf92yoVW7DaJ5Qab2nTsM,Bayer Full,Majteczki w kropeczki,1993,2013,1999,
+0KRBV74svbF62hwwriiiU9,Justyna Steczkowska,Dziewczyna Szamana,1996*,2002,1996,
+3bnwZFjSvst58HEeneiR5X,Kasia Kowalska,A to co mam,1994*,1999,1995,
+0WlgysoQGR4AUt8z5fZz9z,Norbi,Kobiety są gorące,1995*,2005,1997,
+4tf92yoVW7DaJ5Qab2nTsM,Bayer Full,Majteczki w kropeczki,1993*,2013,1999,
 0U8xg1N9y7haY8V6R1FRUJ,Kaliber 44,Plus i minus,1996,1996,,
-2TTwLpEBpWQxjz5UQD75fd,Golec uOrkiestra,Ściernisko,1999,2019,,FUZZY-TITLE
+2TTwLpEBpWQxjz5UQD75fd,Golec uOrkiestra,Ściernisko,1999*,2019,,FUZZY-TITLE
 1QlnHvufGIIZs2XjRXRHcF,Big Cyc,Makumba,1994,1996,1996,
-56bv4IFwBeLgZDKDygASCu,Reni Jusis,Zakręcona,1999,2005,1998,
-0ETkRDuyDSI06f5qo5KkxU,Brathanki,Czerwone korale,2000,2000,2000,
-5ytkHKps6RVVDFZwAqVDCB,Myslovitz,Długość dźwięku samotności,2000,1999,1999,
-5EL3e4591zeABBe70qvxDV,Myslovitz,Kraków,2000,1999,1999,
-72aWvD7aUqvKJ6RrnXWhTd,Myslovitz,Acidland,2001,2003,2002,FUZZY-TITLE
+56bv4IFwBeLgZDKDygASCu,Reni Jusis,Zakręcona,1999*,2005,1998,
+0ETkRDuyDSI06f5qo5KkxU,Brathanki,Czerwone korale,2000*,2000,2000,
+5ytkHKps6RVVDFZwAqVDCB,Myslovitz,Długość dźwięku samotności,2000*,1999,1999,
+5EL3e4591zeABBe70qvxDV,Myslovitz,Kraków,2000*,1999,1999,
+72aWvD7aUqvKJ6RrnXWhTd,Myslovitz,Acidland,2001*,2003,2002,FUZZY-TITLE
 3ntFHnnjthR8F6xr42KXTC,Ich Troje,Powiedz,2001,2001,2001,
 0CBj18X3J7MabwDqKeMxuo,Ich Troje,A wszystko to bo ciebie kocham,1999,1999,1999,YEAR?-mb1999
 5efQj1lkGkkm4sxFHfHrLO,Paktofonika,Jestem Bogiem,2000,2000,2000,
-0Yx12GKQAyGoBdFT5Jfjyl,Łzy,Agnieszka już dawno tutaj nie mieszka,2000,2024,,FUZZY-TITLE
+0Yx12GKQAyGoBdFT5Jfjyl,Łzy,Agnieszka już dawno tutaj nie mieszka,2000*,2024,,FUZZY-TITLE
 1vgqCtUGKu5XsEgtRDkLfz,Ania Dąbrowska,Charlie Charlie,2004,2004,,
 1NZU0xJmGOhTp7adQtzUNO,Cool Kids of Death,Butelki z benzyna i kamienie,2002,2002,,FUZZY-TITLE
 43EA6WfNRligIsFL9Ui6pH,Feel,A gdy jest już ciemno,2007,2007,2007,
@@ -148,12 +148,12 @@ track_id,artist,title,year,spotify_year,mb_year,check
 4SsiC8a6tccHyIUevr6c9A,Coma,Leszek Żukowski,2004,2004,2004,
 1kq7HYAGUDNEdh6K2LpnjW,Kombii,Awinion,2005,2007,2007,
 6FBPQuYFZIne5cpTASUOGR,Strachy na Lachy,Dzień dobry kocham cię,2003,2005,2005,
-5eYQ4VtpaITG5fMmLBPYZi,Andrzej Piaseczny,Chodź przytul przebacz,2000,2009,2009,
+5eYQ4VtpaITG5fMmLBPYZi,Andrzej Piaseczny,Chodź przytul przebacz,2000*,2009,2009,
 0Y8KomrOSA3OXlehtALUgf,Virgin,Dżaga,2003,2004,2004,
 ,Ivan i Delfin,Czarna dziewczyna,2003,,,NO-SPOTIFY-MATCH
 5UgFiVFMmD3Hn00AggzEXd,O.S.T.R.,Masz to jak w banku,2001,2001,2001,YEAR?-mb2001
-2kj7OFRtWj9bkm8jqnT2EY,Peja,Głucha noc,2001,2013,2004,
-5W3sNLWeeol3G5K8LuFhoV,Lady Pank,Stacja Warszawa,2002,2012,2004,
+2kj7OFRtWj9bkm8jqnT2EY,Peja,Głucha noc,2001*,2013,2004,
+5W3sNLWeeol3G5K8LuFhoV,Lady Pank,Stacja Warszawa,2002*,2012,2004,
 26bju2IkYGvdIYVfaeEfYz,Enej,Symetryczno-liryczna,2011,2012,2012,
 7ljM68o858hnx5UVXMxA4D,Enej,Skrzydlate ręce,2011,2012,2012,
 2kcQMkj0nztimTpqWlVrof,Zakopower,Boso,2011,2011,2011,
@@ -161,7 +161,7 @@ track_id,artist,title,year,spotify_year,mb_year,check
 0JPQmvhG61f6RXBtDzipkK,Brodka,W pięciu smakach,2010,2010,2010,
 4anjefXEpdBQ76Zum3sEJP,Luxtorpeda,Autystyczny,2011,2011,2011,
 3v0fVON6z5CnRlle3SJZU1,Dawid Podsiadło,Trójkąty i kwadraty,2013,2013,2013,
-3kWcNl9IThew9vwO8UM3fD,Dawid Podsiadło,Nie ma fal,2015,2018,2018,
+3kWcNl9IThew9vwO8UM3fD,Dawid Podsiadło,Nie ma fal,2015*,2018,2018,
 77vLpSAMNzeYL4EBeZxWqI,Dawid Podsiadło,Małomiasteczkowy,2018,2018,2018,
 2s6gczjAQ0QfBlnJbRRA2a,Mrozu,Nic do stracenia,2013,2014,2014,
 0qOSEgpYFuo4xE8IXThnAx,Margaret,Thank You Very Much,2013,2013,2013,
@@ -169,14 +169,14 @@ track_id,artist,title,year,spotify_year,mb_year,check
 009In6KPSvsRJ6uAG0HIWB,Organek,Głupi ja,2014,2014,,FUZZY-TITLE
 1p1WDGChkI8ilPQBV3I9S1,Cleo,My Słowianie,2014,2014,2013,
 2DiCpRfPgf6dW5uYQiHGO5,Sarsa,Naucz mnie,2015,2015,2015,
-4aG7zXOEIvdjt1rovSYHUj,Kortez,Stare drzewa,2015,2018,,
+4aG7zXOEIvdjt1rovSYHUj,Kortez,Stare drzewa,2015*,2018,,
 6hoqroH3GXEi3MO7PnZUjz,Kortez,Bumerang,2015,2015,2015,
 7I85qS9VihgiTcmISbnmcB,Natalia Nykiel,Bądź duży,2015,2015,2014,
 005fIMi8VxYJy4mNTGR4S8,Krzysztof Zalewski,Miłość miłość,2016,2016,2016,
-5IM0gGOQXNaa8Rir0FJaDc,Taco Hemingway,6 zer,2016,2015,2015,
+5IM0gGOQXNaa8Rir0FJaDc,Taco Hemingway,6 zer,2016*,2015,2015,
 5wY7ZogIkopqocAjGeyzPO,Daria Zawiałow,Malinowy chruśniak,2017,2017,2017,
 4eTLBXcO0q4KRqubdLNYQc,Kwiat Jabłoni,Dziś późno pójdę spać,2019,2019,2018,
-5SPO91s5J85CAxHREvwj3b,Męskie Granie Orkiestra,Początek,2019,2018,2018,
+5SPO91s5J85CAxHREvwj3b,Męskie Granie Orkiestra,Początek,2019*,2018,2018,
 4CxZbANvWsKCMb7qeONc3V,Mata,Patointeligencja,2019,2020,2020,
 0xwpK0H2aL5YxREvcNw4Pe,Sanah,Szampan,2020,2020,2020,
 23qZiN0yTTxvUGMSaw6RGt,Sanah,Królowa dram,2020,2020,2020,
@@ -184,19 +184,19 @@ track_id,artist,title,year,spotify_year,mb_year,check
 73EJNii39e2xVNqcxWlm7N,Ralph Kaminski,Bal u Rafała,2022,2022,2022,
 7mAnwV4f6RxGMmA7D02Hw9,Young Leosia,Szklanki,2021,2021,2021,
 2fSz6MBKMPjOApUhGYfPid,Ochman,River,2022,2022,2022,
-4A86mVVA7hwCfWa1O1tTce,Mata,Kiss Cam,2022,2021,,FUZZY-TITLE
-3xxjYOFR1y7By2wNDS51XV,Blanka,Solo,2023,2022,2022,
-2Y1Nd54Jrgciu2HtpP5ymM,Sobel,Impreza,2020,2019,,
-29y3XEzxe6r3IQLyU2d03B,Edyta Górniak,One & One,1997,,,
+4A86mVVA7hwCfWa1O1tTce,Mata,Kiss Cam,2022*,2021,,FUZZY-TITLE
+3xxjYOFR1y7By2wNDS51XV,Blanka,Solo,2023*,2022,2022,
+2Y1Nd54Jrgciu2HtpP5ymM,Sobel,Impreza,2020*,2019,,
+29y3XEzxe6r3IQLyU2d03B,Edyta Górniak,One & One,1997*,,,
 3ZCeZfeh8ejSrn4zlPkeKQ,Natalia Kukulska,Wierność jest nudna,2011,,,
-4Dw3fQrWGRteHRDeCAIrIY,Wilki,Na zawsze i na wieczność,1992,,,
-036fV8swMleTnjOdhVDV1E,Maanam,Cykady na Cykladach,1981,,,
+4Dw3fQrWGRteHRDeCAIrIY,Wilki,Na zawsze i na wieczność,1992*,,,
+036fV8swMleTnjOdhVDV1E,Maanam,Cykady na Cykladach,1981*,,,
 40tVex0wO2mzBWlDO6wcj7,T.Love,Chłopaki nie płaczą,1997,,,
-6SLzx6ZzRP4gDJz0j1ppLq,Mr. Zoob,Mój Jest Ten Kawałek Podłogi,1988,,,
-6iDnwqlqwZhHskFg8jmmuf,Brathanki,W Kinie W Lublinie - Kochaj Mnie,2000,,,
-6nhEv1y5OboIWD8gtTVijB,"Yugoton, Kazik",Malcziki,2001,,,
-7s9P1kbtbKai57Ylp5TWdj,Perfect,Kołysanka dla Nieznajomej,1981,,,
-6PzTC3YtQs1WGesFDGpX9K,Maryla Rodowicz,To Już Było,1985,,,
+6SLzx6ZzRP4gDJz0j1ppLq,Mr. Zoob,Mój Jest Ten Kawałek Podłogi,1988*,,,
+6iDnwqlqwZhHskFg8jmmuf,Brathanki,W Kinie W Lublinie - Kochaj Mnie,2000*,,,
+6nhEv1y5OboIWD8gtTVijB,"Yugoton, Kazik",Malcziki,2001*,,,
+7s9P1kbtbKai57Ylp5TWdj,Perfect,Kołysanka dla Nieznajomej,1981*,,,
+6PzTC3YtQs1WGesFDGpX9K,Maryla Rodowicz,To Już Było,1985*,,,
 3Yu51If8d6W32sjFKmnPel,"Krzysztof Kiljański, Kayah","Prócz Ciebie, Nic",2004,,,
 4Wa9xLwIOdletdE8tBZKp5,Brodka,Znam cie na pamiec,2004,,,
 7ACVcRZsQb2z5NUMZyZLil,Brodka,Dziewczyna Mojego Chlopaka,2004,,,

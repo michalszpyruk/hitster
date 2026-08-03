@@ -34,6 +34,23 @@ Two consequences worth remembering before "fixing" anything:
   Those only get caught by someone who knows the song. Kombi's *Słodkiego miłego życia*
   (1983 → 1984) and *Black and White* (1984 → 1985) were both found that way.
 
+## A `*` after the year means unconfirmed
+
+`1966*` prints with a small superscript star on the card and shows in the app's Reveal.
+It means nobody has verified that year — not that it is wrong.
+
+A year is left clean only when Spotify places the track on an original-looking album 0–2
+years after it. Currently 114 of 195 cards are starred, because for pre-1990 Polish music
+Spotify carries only compilations, so there is nothing to check against.
+
+Fix them as you notice them: edit `songs.csv` (and `seed.csv`, so a regeneration does not
+bring the old value back), drop the `*`, and re-run `make_cards.py`. Everything that does
+arithmetic on a year strips the star first — `test_cards.py` covers that.
+
+Free sources were all measured and all failed, which is why the star exists:
+Spotify 4/13, MusicBrainz 3/10, Wikidata ~1/4 (it dated Kombii's *Pokolenie* to 1955).
+Discogs is the one plausible option left, but its search needs a free personal token.
+
 ## Auditing the deck
 
 ```bash

@@ -69,7 +69,7 @@ def main():
             elif len(c['artists']) > 1 and ',' not in r['artist'] and ' i ' not in r['artist']:
                 reasons.append('EXTRA-ARTIST')
             if c['date'].isdigit() and not looks_like_compilation(c['album']):
-                gap = int(c['date']) - int(r['year'])
+                gap = int(c['date']) - int(r['year'].rstrip('*'))   # a '*' marks an unconfirmed year
                 # Earlier than our year on an original-looking album is the strong
                 # signal: nothing can be released before its own release. Later is
                 # almost always just a reissue and says nothing.

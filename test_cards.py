@@ -1,5 +1,5 @@
 """Checks for the two things that fail silently. Run: python test_cards.py"""
-from make_cards import back_order, palette_class, PALETTES, COLS
+from make_cards import back_order, palette_class, split_year, PALETTES, COLS
 from fetch_songs import flag, norm, artist_matches
 
 
@@ -65,7 +65,19 @@ def test_palette_is_stable_and_year_independent():
     assert max(counts) < 2 * min(counts), f'lopsided palette spread: {counts}'
 
 
+def test_unconfirmed_year_marker():
+    """A trailing '*' means "nobody has verified this" and must survive to the card."""
+    assert split_year('1984') == ('1984', '')
+    assert split_year('1984*') == ('1984', '*')
+    assert split_year(' 1984* ') == ('1984', '*')
+    assert split_year(1984) == ('1984', '')
+    # Every consumer strips the star before doing arithmetic; if one forgets, it throws.
+    for y in ('1984', '1984*'):
+        assert int(y.rstrip('*')) == 1984
+
+
 if __name__ == '__main__':
+    test_unconfirmed_year_marker()
     test_palette_is_stable_and_year_independent()
     test_duplex_alignment()
     test_year_flag()
