@@ -15,10 +15,39 @@ back catalogue it is wildly wrong:
 | Perfect – Autobiografia | 1981 | 2003 | 1982 |
 | Maanam – Kocham Cię, Kochanie Moje | 1980 | 1995 | 1991 |
 
-MusicBrainz was exact on only 3 of 10 spot-checked Polish songs. Since the entire game is
-"place the song on a timeline", the year has to be trustworthy — so `seed.csv` holds curated
-years and is the source of truth. MusicBrainz is used for one narrow job: if it knows of a
-release *earlier* than the seed year, the row is flagged for review.
+MusicBrainz was exact on only 3 of 10 spot-checked Polish songs, and Spotify 4 of 13. Since the
+entire game is "place the song on a timeline", the year has to be trustworthy — so `seed.csv`
+holds curated years and is the source of truth. MusicBrainz is used for one narrow job: if it
+knows of a release *earlier* than the seed year, the row is flagged for review.
+
+## The year on a card is the SINGLE / first release
+
+Not the album. *Patointeligencja* is 2019 (single), not 2020 (album); *Kombinat* is 1982, not
+1983. This matches how Hitster dates songs and how people remember hearing them.
+
+Two consequences worth remembering before "fixing" anything:
+
+- A card sitting one or two years *before* its album is normal, not an error. That is why
+  `audit_years.py` uses `TOLERANCE = 1` and only treats an *earlier* album as evidence —
+  nothing can be released before its own release, but plenty is re-released after.
+- Because of that tolerance, an off-by-one year is invisible to every automated check here.
+  Those only get caught by someone who knows the song. Kombi's *Słodkiego miłego życia*
+  (1983 → 1984) and *Black and White* (1984 → 1985) were both found that way.
+
+## Auditing the deck
+
+```bash
+python audit_years.py    # flags suspicious cards, never edits songs.csv
+```
+
+It reports three things, in descending order of how much they matter:
+
+- `ALBUM-EARLIER` — our year is later than an original-looking album. Strong evidence we are wrong.
+- `EXTRA-ARTIST` + `FAR-LATER` together — the track is a modern remake or duet, not the original
+  recording. *Nie spoczniemy* resolving to BIAŁO CZERWONE GITARY (2025) is unguessable in play.
+- `EXTRA-ARTIST` alone — noisy. Niemen & Akwarele and Republika & Ciechowski are original credits.
+
+Results cache in `album_cache.json`, so re-running is free.
 
 ## Pipeline
 

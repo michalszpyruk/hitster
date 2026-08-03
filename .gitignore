@@ -5,3 +5,5 @@ cards.html
 songs.new.csv
 mb_cache.json
 spotify_cache.json
+album_cache.json
+audit.csv
