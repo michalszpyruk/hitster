@@ -34,6 +34,14 @@
   .row { display:flex; gap:10px; width:100%; max-width:420px; }
   select { width:100%; max-width:420px; padding:14px; border-radius:12px; background:#1b1f26;
            color:var(--fg); border:1px solid #2c323c; font-size:16px; }
+  .modes { display:flex; gap:8px; width:100%; max-width:420px; }
+  .modes button { font-size:15px; padding:14px 6px; min-height:52px; }
+  .modes button.sel { background:var(--accent); color:#07130c; border-color:transparent; }
+  .slider { width:100%; max-width:420px; display:flex; flex-direction:column; gap:6px;
+            color:var(--dim); font-size:14px; }
+  .slider b { color:var(--fg); }
+  .slider input { width:100%; accent-color:var(--accent); height:34px; }
+  .slider.off { opacity:.35; }
 </style>
 </head>
 <body>
@@ -48,6 +56,15 @@
 <div id="s-scan" class="screen">
   <video id="video" playsinline muted autoplay></video>
   <p class="hint" id="scanhint">Point the camera at a card.</p>
+  <div class="modes" id="modes">
+    <button class="mode" data-len="0">Full song</button>
+    <button class="mode" data-len="30">30 s</button>
+    <button class="mode" data-len="5">5 s</button>
+  </div>
+  <label class="slider" id="sliderrow">
+    <span>Clip length <b id="lenout">30 s</b></span>
+    <input type="range" id="len" min="1" max="60" step="1" value="30">
+  </label>
   <p class="err" id="scanerr"></p>
 </div>
 
@@ -60,8 +77,11 @@
   </div>
   <button class="primary" id="reveal">Reveal</button>
   <div class="row">
-    <button id="pause">Pause</button>
+    <button id="toggle">Pause</button>
     <button id="next">Next card</button>
+  </div>
+  <div class="row">
+    <button id="replay">Replay from start</button>
   </div>
   <select id="devices" hidden></select>
   <p class="err" id="playerr"></p>
@@ -80,8 +100,26 @@ const show = name => document.querySelectorAll('.screen')
   .forEach(s => s.classList.toggle('on', s.id === 's-' + name));
 
 let deck = {};        // track_id -> {a: artist, t: title, y: year}
+let deckError = null; // why the deck failed to load, if it did
 let current = null;   // deck entry for the card being played
 let currentId = null; // its Spotify track id
+let playing = false;  // drives the Play/Pause button label
+
+// Answers come from deck.json, never from Spotify: Spotify's release_date is the
+// remaster year and would date "Nie spoczniemy" to 2025 instead of 1977.
+// no-store because a 404 cached before the deck was first deployed would otherwise
+// stick around and make every card read "Unknown card".
+async function loadDeck() {
+  try {
+    const r = await fetch('deck.json', {cache: 'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    deck = await r.json();
+    if (!Object.keys(deck).length) throw new Error('deck is empty');
+  } catch (e) {
+    deck = {};
+    deckError = e.message;
+  }
+}
 
 // ---------------------------------------------------------------- auth (PKCE)
 // PKCE, not the client-credentials flow: this page is public, so it must never
@@ -146,7 +184,14 @@ async function api(path, opts = {}) {
   if (r.status === 204 || r.status === 202) return null;
   const body = await r.text();
   if (!r.ok) throw Object.assign(new Error(body || r.status), {status: r.status});
-  return body ? JSON.parse(body) : null;
+  if (!body) return null;
+  try {
+    return JSON.parse(body);
+  } catch {
+    // Name the endpoint -- a bare "JSON Parse error: Unexpected identifier" gives
+    // no clue which call produced it.
+    throw new Error(`${path} returned non-JSON: ${body.slice(0, 60)}`);
+  }
 }
 
 // ---------------------------------------------------------------- playback
@@ -169,23 +214,56 @@ async function pickDevice(prefer) {
   return chosen.id;
 }
 
+// clipLen: seconds to play, or 0 for the whole song under manual control.
+let clipLen = +(localStorage.getItem('clipLen') ?? 30);
+let clipTimer = null;
+
+function cancelClip() { clearTimeout(clipTimer); clipTimer = null; }
+
+// Durations are cached because /tracks is one request per card and this app has
+// already been locked out of the API for 99 minutes once.
+async function trackDuration(id) {
+  const hit = localStorage.getItem('dur:' + id);
+  if (hit) return +hit;
+  const t = await api('/tracks/' + id);
+  localStorage.setItem('dur:' + id, t.duration_ms);
+  return t.duration_ms;
+}
+
+// Start somewhere in the body of the song: intros and fade-outs make poor clues.
+async function clipStart(trackId, ms) {
+  const dur = await trackDuration(trackId);
+  const lo = Math.floor(dur * 0.15);
+  const hi = Math.max(lo, dur - ms - 2000);
+  return lo + Math.floor(Math.random() * Math.max(1, hi - lo));
+}
+
 async function play(trackId, prefer) {
   $('playerr').textContent = '';
+  cancelClip();
   const device = await pickDevice(prefer);
   if (!device) {
     $('playerr').textContent = 'No Spotify device found. Open Spotify on this phone, press play once, then tap Next card.';
     return;
   }
   try {
+    const ms = clipLen * 1000;
+    const body = {uris: ['spotify:track:' + trackId]};
+    if (ms) body.position_ms = await clipStart(trackId, ms);
     await api('/me/player/play?device_id=' + device, {
       method: 'PUT', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({uris: ['spotify:track:' + trackId]})
+      body: JSON.stringify(body)
     });
-    $('status').textContent = 'Playing…';
+    setPlaying(true);
+    if (ms) clipTimer = setTimeout(async () => {
+      try { await api('/me/player/pause', {method: 'PUT'}); } catch (e) {}
+      setPlaying(false);
+    }, ms);
   } catch (e) {
+    setPlaying(false);
     $('playerr').textContent = e.status === 403
       ? 'Spotify refused playback — this needs a Premium account.'
-      : 'Could not start playback: ' + e.message.slice(0, 120);
+      : 'Could not start playback: ' + String(e.message).slice(0, 140);
   }
 }
 
@@ -197,6 +275,7 @@ const ctx = canvas.getContext('2d', {willReadFrequently: true});
 
 async function startScan() {
   show('scan');
+  cancelClip();   // a pending auto-stop must not fire onto the next card
   $('scanerr').textContent = '';
   $('answer').hidden = true;
   try {
@@ -244,24 +323,76 @@ function onCard(trackId) {
 }
 
 // ---------------------------------------------------------------- wiring
+function setPlaying(on) {
+  playing = on;
+  $('toggle').textContent = on ? 'Pause' : 'Play';
+  $('status').textContent = on ? 'Playing…' : 'Paused';
+}
+
+function setMode(len, {save = true} = {}) {
+  clipLen = len;
+  if (save) localStorage.setItem('clipLen', len);
+  document.querySelectorAll('.mode').forEach(b =>
+    b.classList.toggle('sel', +b.dataset.len === len));
+  $('sliderrow').classList.toggle('off', len === 0);
+  if (len) { $('len').value = len; }
+  $('lenout').textContent = len ? len + ' s' : 'full song';
+  $('replay').textContent = len ? 'Another clip' : 'Restart song';
+}
+
+document.querySelectorAll('.mode').forEach(b =>
+  b.onclick = () => setMode(+b.dataset.len));
+// Dragging the slider implies a clip, so it also drops you out of full-song mode.
+$('len').oninput = e => setMode(+e.target.value);
+
 $('login').onclick = login;
 $('next').onclick = startScan;
 // Switching output (phone -> speaker) restarts the same track on the new device.
 $('devices').onchange = e => currentId && play(currentId, e.target.value);
-$('pause').onclick = async () => {
-  try { await api('/me/player/pause', {method:'PUT'}); $('status').textContent = 'Paused'; }
-  catch (e) { $('playerr').textContent = e.message.slice(0, 120); }
+
+// Resume, not restart: /play with no body picks up where the pause left off.
+$('toggle').onclick = async () => {
+  $('playerr').textContent = '';
+  try {
+    if (playing) {
+      // Drop the auto-stop too, or it would fire later and cut short a resumed track.
+      cancelClip();
+      await api('/me/player/pause', {method: 'PUT'});
+      setPlaying(false);
+    } else {
+      await api('/me/player/play', {method: 'PUT'});
+      setPlaying(true);
+    }
+  } catch (e) {
+    $('playerr').textContent = e.status === 404
+      ? 'Spotify lost the device. Press play in Spotify once, then tap Play again.'
+      : String(e.message).slice(0, 140);
+  }
 };
+
+$('replay').onclick = () => currentId && play(currentId);
+
 $('reveal').onclick = () => {
   $('reveal').hidden = true;
   $('answer').hidden = false;
-  $('a-artist').textContent = current ? current.a : 'Unknown card';
-  $('a-year').textContent   = current ? current.y : '—';
-  $('a-title').textContent  = current ? current.t : 'not in this deck';
+  if (current) {
+    $('a-artist').textContent = current.a;
+    $('a-year').textContent = current.y;
+    $('a-title').textContent = current.t;
+    return;
+  }
+  // Distinguish "deck never loaded" from "this card isn't in the deck" -- they look
+  // identical on screen but need completely different fixes.
+  $('a-artist').textContent = deckError ? 'Answer key not loaded' : 'Card not in deck';
+  $('a-year').textContent = '—';
+  $('a-title').textContent = deckError
+    ? `deck.json: ${deckError}`
+    : `track ${currentId || '?'}`;
 };
 
 (async function boot() {
-  deck = await fetch('deck.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  setMode(clipLen, {save: false});
+  await loadDeck();
   const code = new URLSearchParams(location.search).get('code');
   if (code) { try { await exchangeCode(code); } catch (e) { console.error(e); } }
   if (await token()) startScan(); else show('login');

@@ -1,5 +1,5 @@
 """Checks for the two things that fail silently. Run: python test_cards.py"""
-from make_cards import back_order, COLS
+from make_cards import back_order, palette_class, PALETTES, COLS
 from fetch_songs import flag, norm, artist_matches
 
 
@@ -46,7 +46,27 @@ def test_artist_matching():
     assert not artist_matches('Republika', 'Perfect')
 
 
+def test_palette_is_stable_and_year_independent():
+    """A card must keep its colour forever, or a reprint won't match the deck."""
+    import subprocess, sys
+    tid = '6CwbrtZnJNqef5CqSLqPdX'
+    # Across separate processes: catches anyone swapping crc32 for salted hash().
+    out = subprocess.run(
+        [sys.executable, '-c',
+         'from make_cards import palette_class; print(palette_class(%r))' % tid],
+        capture_output=True, text=True, check=True).stdout.strip()
+    assert out == palette_class(tid), 'palette changed between processes'
+
+    ids = ['%022d' % i for i in range(400)]
+    used = {palette_class(t) for t in ids}
+    assert used == {f'c{i}' for i in range(PALETTES)}, f'palettes unused: {used}'
+    # Spread should be roughly even -- no palette starved or dominant.
+    counts = [sum(palette_class(t) == f'c{i}' for t in ids) for i in range(PALETTES)]
+    assert max(counts) < 2 * min(counts), f'lopsided palette spread: {counts}'
+
+
 if __name__ == '__main__':
+    test_palette_is_stable_and_year_independent()
     test_duplex_alignment()
     test_year_flag()
     test_norm_folds_polish()
