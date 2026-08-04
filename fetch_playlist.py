@@ -123,11 +123,93 @@ def merge():
     print(f'{DECK}: +{added} cards (now {len(deck)}). {skipped} skipped for having no year.')
 
 
+def fill_dates():
+    """Fill blank years in playlist_new.csv from Discogs, cross-checked with Spotify.
+
+    Both sources only ever err LATE -- Spotify reports whichever album the track sits
+    on (usually a compilation), Discogs its earliest indexed pressing. Neither can
+    report a date before the song existed, so the earlier of the two is the better
+    estimate. The star is dropped only when they agree within a year.
+
+    Spotify is optional: when it is rate-limited (which happens for hours at a time)
+    this still works off Discogs alone, which is the better source for old records.
+    """
+    import json as _json
+    from fetch_songs import load_env, spotify_token, get, RateLimited
+    from verify_discogs import discogs_year
+
+    env = load_env()
+    dcache = _json.load(open('discogs_cache.json', encoding='utf-8')) \
+        if os.path.exists('discogs_cache.json') else {}
+    acache = _json.load(open('album_cache.json', encoding='utf-8')) \
+        if os.path.exists('album_cache.json') else {}
+    headers, spotify_ok = None, True
+    try:
+        headers = {'Authorization': 'Bearer ' + spotify_token(env)}
+    except Exception:
+        spotify_ok = False
+
+    rows = list(csv.DictReader(open(OUT, encoding='utf-8')))
+    blank = [r for r in rows if not r['year'].strip()]
+    print(f'dating {len(blank)} tracks (spotify {"on" if spotify_ok else "unavailable"})')
+    try:
+        for r in blank:
+            d = discogs_year(r['artist'], r['title'], env['DISCOGS_TOKEN'], dcache)
+            tid = r['track_id']
+            if spotify_ok and tid not in acache:
+                try:
+                    resp = get(f'https://api.spotify.com/v1/tracks/{tid}', headers, {'market': 'PL'})
+                    if resp.status_code == 200:
+                        t = resp.json()
+                        acache[tid] = {'album': t['album']['name'],
+                                       'date': t['album']['release_date'][:4],
+                                       'artists': [a['name'] for a in t['artists']],
+                                       'name': t['name']}
+                except RateLimited as e:
+                    print(f'  spotify locked ({e}); continuing on Discogs alone')
+                    spotify_ok = False
+            s = acache.get(tid, {}).get('date')
+            s = int(s) if s and s.isdigit() else None
+            cands = [x for x in (d, s) if x]
+            if not cands:
+                continue
+            best = min(cands)
+            agreed = d is not None and s is not None and abs(d - s) <= 1
+            r['year'] = f'{best}' if agreed else f'{best}*'
+            print(f"  {r['artist'][:22]:<22} {r['title'][:26]:<26} "
+                  f"discogs={d} spotify={s} -> {r['year']}")
+    finally:
+        _json.dump(dcache, open('discogs_cache.json', 'w', encoding='utf-8'), ensure_ascii=False)
+        _json.dump(acache, open('album_cache.json', 'w', encoding='utf-8'), ensure_ascii=False)
+        with open(OUT, 'w', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, ['track_id', 'artist', 'title', 'year', 'check'])
+            w.writeheader()
+            w.writerows(rows)
+    left = sum(1 for r in rows if not r['year'].strip())
+    print(f'\ndated {len(blank) - left}, still blank {left}')
+
+
+def prune():
+    """Drop rows already merged into the deck, so the staging file stays honest."""
+    deck = {r['track_id'] for r in csv.DictReader(open(DECK, encoding='utf-8'))}
+    rows = list(csv.DictReader(open(OUT, encoding='utf-8')))
+    keep = [r for r in rows if r['track_id'] not in deck]
+    with open(OUT, 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, ['track_id', 'artist', 'title', 'year', 'check'])
+        w.writeheader()
+        w.writerows(keep)
+    print(f'{OUT}: {len(rows)} -> {len(keep)} (dropped {len(rows) - len(keep)} already in the deck)')
+
+
 def main(args):
     if not args:
         sys.exit(__doc__)
     if args[0] == '--merge':
         return merge()
+    if args[0] == '--dates':
+        return fill_dates()
+    if args[0] == '--prune':
+        return prune()
 
     have_ids, have_titles = set(), set()
     if os.path.exists(DECK):
