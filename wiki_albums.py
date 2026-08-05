@@ -14,9 +14,37 @@ Usage:  python wiki_albums.py [--apply]
 import csv, json, os, re, sys, time
 import collections
 
-from wiki_years import page_text
+import requests
+from wiki_years import page_text, API, UA
 from fetch_songs import norm
 from fetch_playlist import clean_title
+
+
+def fetch_many(titles):
+    """{title: wikitext} for up to 50 pages in ONE request.
+
+    Special:Export is the only MediaWiki entry point that returns full wikitext for
+    many pages at once (rvprop=content refuses multiple titles). Fetching pages one
+    at a time made this pass a two-hour job; batched it is a few minutes.
+    """
+    out = {}
+    for i in range(0, len(titles), 50):
+        chunk = [t for t in titles[i:i + 50] if t]
+        if not chunk:
+            continue
+        try:
+            r = requests.get(API, headers=UA, timeout=60,
+                             params={'action': 'query', 'export': 1, 'exportnowrap': 1,
+                                     'titles': '|'.join(chunk), 'format': 'json'})
+            if r.status_code != 200:
+                continue
+            for t, txt in re.findall(r'<page>.*?<title>(.*?)</title>.*?<text[^>]*>(.*?)</text>',
+                                     r.text, re.S):
+                out[t] = txt
+        except Exception:
+            pass
+        time.sleep(PAUSE)
+    return out
 
 DECK = 'songs.csv'
 CACHE = 'wiki_albums_cache.json'
@@ -52,14 +80,8 @@ def album_pages(artist, cache):
     return cache[key]
 
 
-def album_info(page, cache):
+def album_info_from_text(txt):
     """(year, [normalised track titles]) for a studio album article, else (None, [])."""
-    key = f'album|{page}'
-    if key in cache:
-        y, tr = cache[key]
-        return y, tr
-    txt = page_text(page)
-    time.sleep(PAUSE)
     result = (None, [])
     box = re.search(r'\{\{\s*([^\n|}]+infobox[^\n|}]*)', txt, re.I)
     if box and 'album' in box.group(1).lower():
@@ -71,7 +93,6 @@ def album_info(page, cache):
             tracks = [t for t in tracks if 2 < len(t) < 60]
             if y and tracks:
                 result = (int(y.group(1)), tracks)
-    cache[key] = list(result)
     return result
 
 
@@ -97,10 +118,15 @@ def main():
     try:
         for i, (artist, cards) in enumerate(sorted(by.items(), key=lambda x: -len(x[1])), 1):
             pages = album_pages(artist, cache)
+            need = [p for p in pages if f'album|{p}' not in cache]
+            for t, txt in fetch_many(need).items():
+                cache[f'album|{t}'] = list(album_info_from_text(txt))
+            for p in need:
+                cache.setdefault(f'album|{p}', [None, []])
             # earliest studio album containing each track
             best = {}
             for page in pages:
-                y, tracks = album_info(page, cache)
+                y, tracks = cache.get(f'album|{page}', [None, []])
                 if not y:
                     continue
                 tset = set(tracks)
@@ -114,8 +140,9 @@ def main():
                     hits.append((r, int(r['year'].rstrip('*')), y, page))
                 else:
                     misses += 1
-            if i % 20 == 0:
+            if i % 10 == 0:
                 print(f'  {i}/{len(by)} artists, {len(hits)} dated…', flush=True)
+                json.dump(cache, open(CACHE, 'w', encoding='utf-8'), ensure_ascii=False)
     finally:
         json.dump(cache, open(CACHE, 'w', encoding='utf-8'), ensure_ascii=False)
 
