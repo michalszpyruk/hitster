@@ -45,6 +45,12 @@ PINNED = {
     # The card is the Kowalska duet, but the song itself is 1983 -- the deck dates
     # songs, not recordings.
     ('Lady Pank, Kasia Kowalska', 'Zamki na piasku'): '1983',
+    # Web-search verified. "Mamona" is from Masakra (1998), NOT Nowe Sytuacje (1983) --
+    # Discogs was right about this one and the earlier 1984 was my error.
+    ('Republika', 'Mamona'): '1998',
+    ('Perfect', 'Kołysanka dla Nieznajomej'): '1981',
+    ('2 plus 1', 'Windą do nieba'): '1978',
+    ('Maryla Rodowicz', 'Damą być'): '1976',
 }
 UA = {'User-Agent': 'HitsterPL/0.1 +personal-use'}
 TOLERANCE = 1
