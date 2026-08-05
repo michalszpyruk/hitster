@@ -69,6 +69,7 @@ def test_unconfirmed_year_marker():
     """A trailing '*' means "nobody has verified this" and must survive to the card."""
     assert split_year('1984') == ('1984', '')
     assert split_year('1984*') == ('1984', '*')
+    assert split_year('1984**') == ('1984', '**')   # searched the web, still unknown
     assert split_year(' 1984* ') == ('1984', '*')
     assert split_year(1984) == ('1984', '')
     # Every consumer strips the star before doing arithmetic; if one forgets, it throws.

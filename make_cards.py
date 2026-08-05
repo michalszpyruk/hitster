@@ -47,9 +47,15 @@ def palette_class(track_id):
 
 
 def split_year(year):
-    """("1984*") -> ("1984", "*"). A trailing star marks a year nobody has confirmed."""
+    """("1984**") -> ("1984", "**"). Trailing stars mark how unsure the year is.
+
+    ''   confirmed by two independent sources
+    '*'  unverified -- nothing corroborates it, but nothing contradicts it either
+    '**' searched the open web too and still could not pin it down
+    """
     y = str(year).strip()
-    return (y[:-1], '*') if y.endswith('*') else (y, '')
+    digits = y.rstrip('*')
+    return digits, y[len(digits):]
 
 
 def back_html(song):

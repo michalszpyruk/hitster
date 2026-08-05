@@ -267,6 +267,11 @@ def final_pass():
         old = r['year']
         ours = int(old.rstrip('*'))
         key = (r['artist'], r['title'])
+        if old.endswith('**'):
+            # Already taken to the open web and left unresolved. No source pass can
+            # improve on that, and re-deriving would silently discard the effort.
+            stats['web-unresolved'] += 1
+            continue
         if key in PINNED:
             r['year'] = PINNED[key]
             stats['pinned'] += 1
