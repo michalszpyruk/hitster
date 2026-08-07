@@ -43,22 +43,22 @@ track_id,artist,title,year,spotify_year,mb_year,check
 7cBqlKwLd0ltLHyerMHSAB,2 plus 1,Chodź pomaluj mój świat,1972,1986,1972,FUZZY-TITLE YEAR?-mb1972
 6hqftK2O6t2sI5AmwLhnLs,Krystyna Prońko,Jesteś lekiem na całe zło,1983,2000,1983,FUZZY-TITLE
 ,Andrzej i Eliza,Nie liczę godzin i lat,1975,,,NO-SPOTIFY-MATCH
-4MNpebxVPvNs1nwCn5Wuqo,SBB,Freedom with Us,1974*,1978,1978,
-0EauD1ypehCUFYIVyZLy2i,Maanam,Boskie Buenos,1980*,2015,1985,
-6CwbrtZnJNqef5CqSLqPdX,Maanam,Kocham Cię Kochanie Moje,1980*,1995,1991,
+4MNpebxVPvNs1nwCn5Wuqo,SBB,Freedom with Us,1975,1978,1978,
+0EauD1ypehCUFYIVyZLy2i,Maanam,Boskie Buenos,1980,2015,1985,
+6CwbrtZnJNqef5CqSLqPdX,Maanam,Kocham Cię Kochanie Moje,1983,1995,1991,
 70X7swUO33mrChUj4JSnbW,Maanam,Krakowski spleen,1983,2015,1983,
-6QuyeVbqBT9uV5qxx131VO,Maanam,Lucciola,1984*,2015,1984,
-3kZqwraA6E5Sj2ZjIMi8C6,Maanam,Oddech szczura,1980*,2015,1980,
+6QuyeVbqBT9uV5qxx131VO,Maanam,Lucciola,1984,2015,1984,
+3kZqwraA6E5Sj2ZjIMi8C6,Maanam,Oddech szczura,1981,2015,1980,
 2wdPWuN8uhDCdMTVfusz5V,Republika,Kombinat,1982**,1983,1983,
-0cr5D15Kn6PWGYoSFaGe5M,Republika,Biała flaga,1981*,2014,1981,FUZZY-TITLE
-5hOnEdUDSZpiTJXZJIl1jy,Republika,Telefony,1982*,2014,1991,FUZZY-TITLE
-4DoLXcmKky3tWmRKu188p9,Republika,Śmierć w bikini,1983*,2001,,
-68oEr8XOWURWoheb2VatZi,Perfect,Autobiografia,1981*,2003,1982,
+0cr5D15Kn6PWGYoSFaGe5M,Republika,Biała flaga,1981,2014,1981,FUZZY-TITLE
+5hOnEdUDSZpiTJXZJIl1jy,Republika,Telefony,1982,2014,1991,FUZZY-TITLE
+4DoLXcmKky3tWmRKu188p9,Republika,Śmierć w bikini,1983,2001,,
+68oEr8XOWURWoheb2VatZi,Perfect,Autobiografia,1982,2003,1982,
 0yON0VUvFRCULd0BWJlNf4,Perfect,Chcemy być sobą,1981,1981,1981,
 0SQx1rzFdxMDRRecifKZ2u,Perfect,Nie płacz Ewka,1981,1981,1981,
 3atA8wScktqxBZm7TM5kiB,Perfect,Pepe wróć,1981,1981,1983,
 2ViBbCUGyqrs60f3GIpDbq,Lady Pank,Mniej niż zero,1983,2003,,
-55IzVZdFOu4gS5U5RDO4g8,Lady Pank,Kryzysowa narzeczona,1983*,2003,1983,
+55IzVZdFOu4gS5U5RDO4g8,Lady Pank,Kryzysowa narzeczona,1983,2003,1983,
 1f3C0tSFKsjcflvMCa3X27,Lady Pank,Zawsze tam gdzie ty,1984*,2007,1990,
 6RwPrRaUGHmorplKAgf3yY,Budka Suflera,Jolka Jolka pamiętasz,1982,2000,1984,FUZZY-TITLE
 2w0g3wLkzlGj9mW4QTk3yU,Budka Suflera,Takie tango,1985*,1997,1997,
