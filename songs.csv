@@ -26,22 +26,22 @@ track_id,artist,title,year,spotify_year,mb_year,check
 5Y8Dsq5Rms5cuUWnWk37m0,Maryla Rodowicz,Sing-Sing,1976,1976,1976,
 6PyoARCP7y45lLHlqEJVXa,Maryla Rodowicz,Remedium,1978,1978,1978,
 0Z64VYDXM5lVZziPJHEd9L,Anna Jantar,Tyle słońca w całym mieście,1974,1974,1974,
-6qBBQTa27IJAsz3nGxTm7p,Anna Jantar,Nic nie może wiecznie trwać,1978*,1980,,FUZZY-TITLE
-0MuTNYAcuA53hGdgvA7V2J,Budka Suflera,Cień wielkiej góry,1975*,2010,,
-2WfY2N0Md2vEddffnaMPNU,Budka Suflera,Sen o dolinie,1975*,1994,1984,
+6qBBQTa27IJAsz3nGxTm7p,Anna Jantar,Nic nie może wiecznie trwać,1979,1980,,FUZZY-TITLE
+0MuTNYAcuA53hGdgvA7V2J,Budka Suflera,Cień wielkiej góry,1975,2010,,
+2WfY2N0Md2vEddffnaMPNU,Budka Suflera,Sen o dolinie,1974,1994,1984,
 12OV9e97TVkKb33cPqVSOj,Breakout,Poszłabym za tobą,1969,1969,1969,
-1OzlBug7c2LKPvIoMkuQhe,Krzysztof Krawczyk,Parostatek,1972*,2019,1976,
+1OzlBug7c2LKPvIoMkuQhe,Krzysztof Krawczyk,Parostatek,1976,2019,1976,
 22bJ7lVt4BdW4zqZK673JS,Irena Jarocka,Odpływają kawiarenki,1974,1976,2001,FUZZY-TITLE
-4Wm4rtJTkXIGOIWrEvTtzN,Zbigniew Wodecki,Zacznij od Bacha,1976*,2004,1994,
+4Wm4rtJTkXIGOIWrEvTtzN,Zbigniew Wodecki,Zacznij od Bacha,1978,2004,1994,
 4sHTqR2RQGsH5pSFqtXroU,Zbigniew Wodecki,Lubię wracać tam gdzie byłem,1983,2004,1994,
 6dk8atHUykqu6LlIYynvnt,Halina Frąckowiak,Bądź gotowy do drogi,1974,1974,,FUZZY-TITLE
-1m3f0A84ut3wuMkmJKtYih,Stan Borys,Jaskółka uwięziona,1970*,2009,1974,
+1m3f0A84ut3wuMkmJKtYih,Stan Borys,Jaskółka uwięziona,1974,2009,1974,
 4CYojURFHAG0ZQUUdaKJtb,Czesław Niemen,Bema pamięci żałobny rapsod,1969,1969,2009,
-1c5m8DAePjPzpFUe4Wo94H,Andrzej Dąbrowski,Do zakochania jeden krok,1971*,2017,1972,
-1UUBkjBgce8P53hQC3nHtU,Danuta Rinn,Gdzie ci mężczyźni,1974*,2015,2003,
+1c5m8DAePjPzpFUe4Wo94H,Andrzej Dąbrowski,Do zakochania jeden krok,1972,2017,1972,
+1UUBkjBgce8P53hQC3nHtU,Danuta Rinn,Gdzie ci mężczyźni,1974,2015,2003,
 4ep6x5f8h2X91TkXVSEtr8,Klan,Z brzytwą na poziomki,1970,1970,1970,
-7cBqlKwLd0ltLHyerMHSAB,2 plus 1,Chodź pomaluj mój świat,1976*,1986,1972,FUZZY-TITLE YEAR?-mb1972
-6hqftK2O6t2sI5AmwLhnLs,Krystyna Prońko,Jesteś lekiem na całe zło,1979*,2000,1983,FUZZY-TITLE
+7cBqlKwLd0ltLHyerMHSAB,2 plus 1,Chodź pomaluj mój świat,1972,1986,1972,FUZZY-TITLE YEAR?-mb1972
+6hqftK2O6t2sI5AmwLhnLs,Krystyna Prońko,Jesteś lekiem na całe zło,1983,2000,1983,FUZZY-TITLE
 ,Andrzej i Eliza,Nie liczę godzin i lat,1975,,,NO-SPOTIFY-MATCH
 4MNpebxVPvNs1nwCn5Wuqo,SBB,Freedom with Us,1974*,1978,1978,
 0EauD1ypehCUFYIVyZLy2i,Maanam,Boskie Buenos,1980*,2015,1985,
