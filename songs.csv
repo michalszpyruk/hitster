@@ -118,26 +118,26 @@ track_id,artist,title,year,spotify_year,mb_year,check
 5Nxp7zG4uWQGqIJ541lCNP,Golden Life,Oprócz błękitnego nieba,1993,1993,2007,
 4E2Bg0ui1bMfAsvXiMMymy,Kayah,Testosteron,2003,2003,2003,
 5qJxjjK0Oa82E2b10fSIyY,Kayah i Bregović,Prawy do lewego,1999,1999,,
-77ppwEoKPhNZx8h3Nskr7H,Kayah i Bregović,Śpij kochanie śpij,1999*,1999,,
-0sCNMtIhAu9K1fYvEBQw5F,Kayah i Bregović,Trudno kochać,1999*,1999,,FUZZY-TITLE
+77ppwEoKPhNZx8h3Nskr7H,Kayah i Bregović,Śpij kochanie śpij,1999,1999,,
+0sCNMtIhAu9K1fYvEBQw5F,Kayah i Bregović,Trudno kochać,1999,1999,,FUZZY-TITLE
 2udLXdefCnP5kJQo5lWikN,De Mono,Kochać inaczej,1989,2017,1989,
 1ooMy7DtO3KUyHvgexd6ip,De Mono,Zostańmy sami,1990,2017,1990,YEAR?-mb1990
 5KYzcKuuimNnS3jisUkA8G,O.N.A.,Kiedy powiem sobie dość,1996,1996,1996,
 0KRBV74svbF62hwwriiiU9,Justyna Steczkowska,Dziewczyna Szamana,1996,2002,1996,
-3bnwZFjSvst58HEeneiR5X,Kasia Kowalska,A to co mam,1994*,1999,1995,
-0WlgysoQGR4AUt8z5fZz9z,Norbi,Kobiety są gorące,1995*,2005,1997,
-4tf92yoVW7DaJ5Qab2nTsM,Bayer Full,Majteczki w kropeczki,1993*,2013,1999,
+3bnwZFjSvst58HEeneiR5X,Kasia Kowalska,A to co mam,1995,1999,1995,
+0WlgysoQGR4AUt8z5fZz9z,Norbi,Kobiety są gorące,1997,2005,1997,
+4tf92yoVW7DaJ5Qab2nTsM,Bayer Full,Majteczki w kropeczki,1993**,2013,1999,
 0U8xg1N9y7haY8V6R1FRUJ,Kaliber 44,Plus i minus,1996,1996,,
-1QlnHvufGIIZs2XjRXRHcF,Big Cyc,Makumba,1994*,1996,1996,
+1QlnHvufGIIZs2XjRXRHcF,Big Cyc,Makumba,1996,1996,1996,
 56bv4IFwBeLgZDKDygASCu,Reni Jusis,Zakręcona,1998,2005,1998,
-0ETkRDuyDSI06f5qo5KkxU,Brathanki,Czerwone korale,2000*,2000,2000,
+0ETkRDuyDSI06f5qo5KkxU,Brathanki,Czerwone korale,2000,2000,2000,
 5ytkHKps6RVVDFZwAqVDCB,Myslovitz,Długość dźwięku samotności,1999,1999,1999,
 5EL3e4591zeABBe70qvxDV,Myslovitz,Kraków,1999,1999,1999,
-72aWvD7aUqvKJ6RrnXWhTd,Myslovitz,Acidland,2001*,2003,2002,FUZZY-TITLE
+72aWvD7aUqvKJ6RrnXWhTd,Myslovitz,Acidland,2002,2003,2002,FUZZY-TITLE
 3ntFHnnjthR8F6xr42KXTC,Ich Troje,Powiedz,2001,2001,2001,
 0CBj18X3J7MabwDqKeMxuo,Ich Troje,A wszystko to bo ciebie kocham,1999,1999,1999,YEAR?-mb1999
 5efQj1lkGkkm4sxFHfHrLO,Paktofonika,Jestem Bogiem,2000,2000,2000,
-0Yx12GKQAyGoBdFT5Jfjyl,Łzy,Agnieszka już dawno tutaj nie mieszka,2000*,2024,,FUZZY-TITLE
+0Yx12GKQAyGoBdFT5Jfjyl,Łzy,Agnieszka już dawno tutaj nie mieszka,2000,2024,,FUZZY-TITLE
 1vgqCtUGKu5XsEgtRDkLfz,Ania Dąbrowska,Charlie Charlie,2004,2004,,
 1NZU0xJmGOhTp7adQtzUNO,Cool Kids of Death,Butelki z benzyna i kamienie,2002,2002,,FUZZY-TITLE
 43EA6WfNRligIsFL9Ui6pH,Feel,A gdy jest już ciemno,2007,2007,2007,
@@ -145,7 +145,7 @@ track_id,artist,title,year,spotify_year,mb_year,check
 5WbZkXXOcHvmLxbuBfjB9G,Doda,Katharsis,2007,2007,2007,
 6LuOCaMHFBfaR1MLKNHhMA,Happysad,Zanim pójdę,2004,2004,2004,
 4SsiC8a6tccHyIUevr6c9A,Coma,Leszek Żukowski,2004,2004,2004,
-1kq7HYAGUDNEdh6K2LpnjW,Kombii,Awinion,2005*,2007,2007,
+1kq7HYAGUDNEdh6K2LpnjW,Kombii,Awinion,2007,2007,2007,
 6FBPQuYFZIne5cpTASUOGR,Strachy na Lachy,Dzień dobry kocham cię,2003*,2005,2005,
 5eYQ4VtpaITG5fMmLBPYZi,Andrzej Piaseczny,Chodź przytul przebacz,2000*,2009,2009,
 0Y8KomrOSA3OXlehtALUgf,Virgin,Dżaga,2003,2004,2004,
