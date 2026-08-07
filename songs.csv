@@ -1,30 +1,30 @@
 track_id,artist,title,year,spotify_year,mb_year,check
 6edKYktrjHFfTh0SB3O76j,Czesław Niemen,Dziwny jest ten świat,1967,2023,1980,FUZZY-TITLE
-0JcUJ4ZF75Z3Q3bda0BoWa,Czesław Niemen,Sen o Warszawie,1966*,2014,1979,
-4J7Hiscxz5qGYLSwRkl8Pr,Czesław Niemen,Czy mnie jeszcze pamiętasz,1964*,1968,,
+0JcUJ4ZF75Z3Q3bda0BoWa,Czesław Niemen,Sen o Warszawie,1966,2014,1979,
+4J7Hiscxz5qGYLSwRkl8Pr,Czesław Niemen,Czy mnie jeszcze pamiętasz,1969,1968,,
 32Nv867OX4nA20sbjKcmQz,Czerwone Gitary,Anna Maria,1968,2015,1968,
 64PrlRNzKDm3de49MMzPMl,Czerwone Gitary,Historia jednej znajomości,1966,1966,,
 7FYOAT3OYVFDXr6f33oBhM,Czerwone Gitary,Nie zadzieraj nosa,1966,1966,1991,
-53CWYDvhZFnCL63urRo4kQ,Czerwone Gitary,Biały krzyż,1968*,2015,1968,
+53CWYDvhZFnCL63urRo4kQ,Czerwone Gitary,Biały krzyż,1968,2015,1968,
 2g59LWL5y0BuPsyJZQTubb,Skaldowie,Z kopyta kulig rwie,1968,1969,1969,
-5S115BRg8EghKqq1D0Wx9J,Skaldowie,Wszystko mi mówi że mnie ktoś pokochał,1968*,2008,1968,
-1Tlg9FVgoVaG8wmd6TujZe,Trubadurzy,Znamy się tylko z widzenia,1968*,2006,1993,
-1igCQvQVusux7Lak5dUnui,Anna German,Tańczące Eurydyki,1964*,1966,1991,FUZZY-TITLE
+5S115BRg8EghKqq1D0Wx9J,Skaldowie,Wszystko mi mówi że mnie ktoś pokochał,1968,2008,1968,
+1Tlg9FVgoVaG8wmd6TujZe,Trubadurzy,Znamy się tylko z widzenia,1968,2006,1993,
+1igCQvQVusux7Lak5dUnui,Anna German,Tańczące Eurydyki,1964,1966,1991,FUZZY-TITLE
 30RYAUBm8vFbZXYw5BnFNo,Karin Stanek,Malowana lala,1962,2015,2017,
 ,Filipinki,Batumi,1963,,1964,NO-SPOTIFY-MATCH
 ,Ewa Demarczyk,Grande Valse Brillante,1967,,1967,NO-SPOTIFY-MATCH
 4xdzAOB3baQ8VmPJ8cf3ij,Breakout,Gdybyś kochał hej,1969,1969,1969,
 ,Niebiesko-Czarni,Nie pukaj do mych drzwi,1965,,,NO-SPOTIFY-MATCH
-2yP42agi5aEFufZ86onpmR,Czerwone Gitary,Nie spoczniemy,1976*,2025,1991,
-5DDJf23zKdvpWBA2KmgyPW,Czerwone Gitary,Płoną góry płoną lasy,1971*,2015,1971,
+2yP42agi5aEFufZ86onpmR,Czerwone Gitary,Nie spoczniemy,1977,2025,1991,
+5DDJf23zKdvpWBA2KmgyPW,Czerwone Gitary,Płoną góry płoną lasy,1971,2015,1971,
 1OrQTsLlcOJRM27CAj0AGd,Marek Grechuta,Dni których nie znamy,1971,2010,1971,
 6nIgrcbRlqOmLhKrfXvs1U,Marek Grechuta,Ocalić od zapomnienia,1971,2015,,
-34BMY6d2POkFLERCJPOrlS,Marek Grechuta,Będziesz moją panią,1970*,2010,1970,
+34BMY6d2POkFLERCJPOrlS,Marek Grechuta,Będziesz moją panią,1970,2010,1970,
 1wGjhv27md3YHSFMPqBFWt,Marek Grechuta,Wiosna ach to ty,1986,2010,1998,
 7Amfq9Zm3UOcU1JUJiFyhd,Skaldowie,Nie domykajmy drzwi,1987,2008,1989,
 1rTIdJlLHR60adzUKtjjAr,Maryla Rodowicz,Małgośka,1973,2025,1974,
 5Y8Dsq5Rms5cuUWnWk37m0,Maryla Rodowicz,Sing-Sing,1976,1976,1976,
-6PyoARCP7y45lLHlqEJVXa,Maryla Rodowicz,Remedium,1970*,1978,1978,
+6PyoARCP7y45lLHlqEJVXa,Maryla Rodowicz,Remedium,1978,1978,1978,
 0Z64VYDXM5lVZziPJHEd9L,Anna Jantar,Tyle słońca w całym mieście,1974,1974,1974,
 6qBBQTa27IJAsz3nGxTm7p,Anna Jantar,Nic nie może wiecznie trwać,1978*,1980,,FUZZY-TITLE
 0MuTNYAcuA53hGdgvA7V2J,Budka Suflera,Cień wielkiej góry,1975*,2010,,
