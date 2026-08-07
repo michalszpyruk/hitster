@@ -97,27 +97,27 @@ track_id,artist,title,year,spotify_year,mb_year,check
 1yuX7XjM3l9Gz0grQwxDIl,Hey,Teksański,1993,1993,1993,
 3a7elKJsZvbRK5CiBvXQMb,Hey,Moja i Twoja nadzieja,1993,1993,1993,
 0WhPYKWZD20gRI9EDnVBHY,Hey,Zazdrość,1993,1993,1993,
-5B30jIcaGzKSRpQIxfKOXL,Wilki,Baśka,1992*,2003,,
+5B30jIcaGzKSRpQIxfKOXL,Wilki,Baśka,2002,2003,,
 70cMKMBmKKIuhvc9j3rSJx,Wilki,Beniamin,1992,1992,1992,
 ,Wilki,Eli lama sabachthani,1992,,,NO-SPOTIFY-MATCH
-0hszTfuEQrTo5xGAX6PoX9,Varius Manx,Zanim zrozumiesz,1994*,2016,1994,FUZZY-TITLE
-7Hqq9gMv0xDndVBoZhov5E,Varius Manx,Orła cień,1995*,2016,1996,FUZZY-TITLE
-0D49iTPnFuQtYvqDyWvxp2,Varius Manx,Ruchome piaski,1996*,2016,1997,FUZZY-TITLE
-0CoBBrYaYakVR5udImOpxe,Edyta Bartosiewicz,Sen,1994*,1999,1994,YEAR?-mb1994
-1zi0Fc4JqcyVwmhXPPpjke,Edyta Bartosiewicz,Jenny,1994*,2010,1997,
+0hszTfuEQrTo5xGAX6PoX9,Varius Manx,Zanim zrozumiesz,1994,2016,1994,FUZZY-TITLE
+7Hqq9gMv0xDndVBoZhov5E,Varius Manx,Orła cień,1996,2016,1996,FUZZY-TITLE
+0D49iTPnFuQtYvqDyWvxp2,Varius Manx,Ruchome piaski,1997,2016,1997,FUZZY-TITLE
+0CoBBrYaYakVR5udImOpxe,Edyta Bartosiewicz,Sen,1994,1999,1994,YEAR?-mb1994
+1zi0Fc4JqcyVwmhXPPpjke,Edyta Bartosiewicz,Jenny,1997,2010,1997,
 1bufVeRDY4rwbM0hMIDZNd,Myslovitz,Chłopcy,1998,1999,1999,
 4gDG78TaA7RYH17odwTXwS,Myslovitz,Dla Ciebie,1998,1999,1999,
 7ECBfG3O3Sxs3D3TGEU7ag,Kult,Baranek,1993,1993,1993,
 79eVgeVdtywf3u1L9lsLeY,Kult,Lewe lewe loff,1993,1994,1994,
 5lFmuFUZM6vF36fzjnJZSu,T.Love,Warszawa,1991,1991,1991,
-6WgO2rYOdgdOvQBywjyhre,T.Love,Ajrisz,1996*,2001,2001,
+6WgO2rYOdgdOvQBywjyhre,T.Love,Ajrisz,2001,2001,2001,
 1wqbsBYM3yGsIB429f7bsc,T.Love,King,1992,1992,1992,
 5979CooXWnrP121vWF2wrO,Elektryczne Gitary,Człowiek z liściem,1992,2014,1992,FUZZY-TITLE
 7lOVtqbqskmzoqAuqiDUup,Elektryczne Gitary,Jestem z miasta,1992,2014,1992,
-6wwTI407wox26wgel9Ahdx,Elektryczne Gitary,Kiler,1997*,2014,1997,FUZZY-TITLE
+6wwTI407wox26wgel9Ahdx,Elektryczne Gitary,Kiler,1997,2014,1997,FUZZY-TITLE
 5Nxp7zG4uWQGqIJ541lCNP,Golden Life,Oprócz błękitnego nieba,1993,1993,2007,
-4E2Bg0ui1bMfAsvXiMMymy,Kayah,Testosteron,1995*,2003,2003,
-5qJxjjK0Oa82E2b10fSIyY,Kayah i Bregović,Prawy do lewego,1999*,1999,,
+4E2Bg0ui1bMfAsvXiMMymy,Kayah,Testosteron,2003,2003,2003,
+5qJxjjK0Oa82E2b10fSIyY,Kayah i Bregović,Prawy do lewego,1999,1999,,
 77ppwEoKPhNZx8h3Nskr7H,Kayah i Bregović,Śpij kochanie śpij,1999*,1999,,
 0sCNMtIhAu9K1fYvEBQw5F,Kayah i Bregović,Trudno kochać,1999*,1999,,FUZZY-TITLE
 2udLXdefCnP5kJQo5lWikN,De Mono,Kochać inaczej,1989,2017,1989,
