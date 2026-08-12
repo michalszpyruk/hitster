@@ -11,10 +11,7 @@ track_id,artist,title,year,spotify_year,mb_year,check
 1Tlg9FVgoVaG8wmd6TujZe,Trubadurzy,Znamy się tylko z widzenia,1968,2006,1993,
 1igCQvQVusux7Lak5dUnui,Anna German,Tańczące Eurydyki,1964,1966,1991,FUZZY-TITLE
 30RYAUBm8vFbZXYw5BnFNo,Karin Stanek,Malowana lala,1962,2015,2017,
-,Filipinki,Batumi,1963,,1964,NO-SPOTIFY-MATCH
-,Ewa Demarczyk,Grande Valse Brillante,1967,,1967,NO-SPOTIFY-MATCH
 4xdzAOB3baQ8VmPJ8cf3ij,Breakout,Gdybyś kochał hej,1969,1969,1969,
-,Niebiesko-Czarni,Nie pukaj do mych drzwi,1965,,,NO-SPOTIFY-MATCH
 2yP42agi5aEFufZ86onpmR,Czerwone Gitary,Nie spoczniemy,1977,2025,1991,
 5DDJf23zKdvpWBA2KmgyPW,Czerwone Gitary,Płoną góry płoną lasy,1971,2015,1971,
 1OrQTsLlcOJRM27CAj0AGd,Marek Grechuta,Dni których nie znamy,1971,2010,1971,
@@ -149,7 +146,6 @@ track_id,artist,title,year,spotify_year,mb_year,check
 6FBPQuYFZIne5cpTASUOGR,Strachy na Lachy,Dzień dobry kocham cię,2005,2005,2005,
 5eYQ4VtpaITG5fMmLBPYZi,Andrzej Piaseczny,Chodź przytul przebacz,2009,2009,2009,
 0Y8KomrOSA3OXlehtALUgf,Virgin,Dżaga,2003,2004,2004,
-,Ivan i Delfin,Czarna dziewczyna,2003,,,NO-SPOTIFY-MATCH
 5UgFiVFMmD3Hn00AggzEXd,O.S.T.R.,Masz to jak w banku,2001,2001,2001,YEAR?-mb2001
 2kj7OFRtWj9bkm8jqnT2EY,Peja,Głucha noc,2000,2013,2004,
 5W3sNLWeeol3G5K8LuFhoV,Lady Pank,Stacja Warszawa,2004,2012,2004,
